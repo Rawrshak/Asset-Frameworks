@@ -83,8 +83,8 @@ An example of the Content Contract metadata json file follows:
 	"name": "Rawrshak Default Assets",
 	"description": "Lorem ipsum...",
 	"image": "https://arweave.net/9KvpWZFGq1rD0slJYbe54-cQ34RTDHmNHiuqJk__AB8",
-    "creator": "Rawrshak",
-    "owner": "Rawrshak",
+	"creator": "Rawrshak",
+	"owner": "Rawrshak",
 	"properties": {
 		"simple_property": "example value",
 		"rich_property": {
