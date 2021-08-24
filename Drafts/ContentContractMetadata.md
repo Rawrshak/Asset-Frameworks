@@ -22,9 +22,9 @@ This metadata be used by all user-facing applications to display contract inform
 
 ## Terminology
 
-`Asset` - the data stored representing in-game tradable items. 
-`Token` - these are the on-chain representation of ownership of asset instances.
-`Content Contract` - this is the onchain representation of a collection of assets.
+* `Asset` - the data stored representing in-game tradable items. 
+* `Token` - these are the on-chain representation of ownership of asset instances.
+* `Content Contract` - this is the onchain representation of a collection of assets.
 
 ## Specification 
 

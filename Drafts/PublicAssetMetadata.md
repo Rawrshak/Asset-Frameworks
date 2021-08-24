@@ -1,5 +1,5 @@
 ---
-title: Public Token Metadata
+title: Public Asset Metadata
 status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
@@ -8,7 +8,7 @@ updated: 2021-08-23
 version: 0.1
 ---
 
-# Public Token Metadata
+# Public Asset Metadata
 
 ## Simple Summary
 
@@ -20,10 +20,10 @@ The public asset metadata is standardized so that all front-end applications kno
 
 ## Terminology 
 
-`Asset` - the data stored representing in-game tradable items. 
-`Tokens` - these are the on-chain representation of ownership of asset instances.
-`Public Metadata` - metadata that is retrievable by any user
-`Private metadata` - metadata that is only retrievable by the token holder for that asset (and developers wallets)
+* `Asset` - the data stored representing in-game tradable items. 
+* `Tokens` - these are the on-chain representation of ownership of asset instances.
+* `Public Metadata` - metadata that is retrievable by any user
+* `Private metadata` - metadata that is only retrievable by the token holder for that asset (and developers wallets)
 
 ## Specification 
 
