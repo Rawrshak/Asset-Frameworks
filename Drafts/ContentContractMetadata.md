@@ -12,19 +12,11 @@ Content Contract Metadata
 
 ## Simple Summary
 
-This is the schema for the content contract metadata. This metadata contains information about the 
-content contract and the assets on that contract. 
+This is the schema for the content contract metadata. This metadata contains information about the content contract and the assets on that contract. 
 
 ## Abstract
 
-Ideally, each Content Contract has a 1-to-1 relationship with a Game from a developer or Collection of 
-assets from a Content Creator. The metadata information will be used by all user-facing applications to 
-get an insight regarding the game that is attached to contract as well as the assets registered to that 
-content contract.
-
-## Motivation
-
-The content contract metadata is being standardized in order to allow game specific smart contracts to operate seemlessly between each other and establish trust in the ecosystem. It provides a common schema for the interoperability of reading data across different front ends.
+Ideally, each Content Contract has a 1-to-1 relationship with a Game from a developer or Collection of assets from a Content Creator. The metadata information will be used by all user-facing applications to get an insight regarding the game that is attached to contract as well as the assets registered to that content contract. 
 
 ## Specification 
 
@@ -32,7 +24,7 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
 
 ```
 {
-    "title": "Token Metadata",
+    "title": "Content Contract Metadata",
     "type": "object",
     "properties": {
         "name": {
@@ -62,6 +54,8 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
     }
 }
 ```
+
+The content contract metadata will be uploaded to permanent storage such as Arweave so data regarding the contract is persistent. This cannot be updated over time and will be permanent once uploaded. 
 
 ### Todo: Localization
 Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosly based on the ERC1155 metadata localization schema. 
