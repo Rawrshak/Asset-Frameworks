@@ -1,10 +1,11 @@
 ---
-sip: 1
 title: Standard Template
 status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
+updated: 2021-08-23
+version: 0.1
 ---
 
 Standard Template
