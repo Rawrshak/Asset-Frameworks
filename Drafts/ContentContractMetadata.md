@@ -8,7 +8,7 @@ updated: 2021-08-23
 version: 0.1
 ---
 
-Content Contract Metadata
+# Content Contract Metadata
 
 ## Simple Summary
 
@@ -16,7 +16,15 @@ This is the schema for the content contract metadata. This metadata contains inf
 
 ## Abstract
 
-Ideally, each Content Contract has a 1-to-1 relationship with a Game from a developer or Collection of assets from a Content Creator. The metadata information will be used by all user-facing applications to get an insight regarding the game that is attached to contract as well as the assets registered to that content contract. 
+A Content Contract is a collection of assets tied together by a common grouping such as assets by the same creator, assets beloning to the same game, or other specific grouping. The contract metadata will contain information relating to the asset collection such as the name of the collect, description, a logo, the creator and the current owner. 
+
+This metadata be used by all user-facing applications to display contract information. The ERC-1155 only contains information about the individual assets on the contract but not the overall information about the collection. We aim to fill in this gap.
+
+## Terminology
+
+`Asset` - the data stored representing in-game tradable items. 
+`Token` - these are the on-chain representation of ownership of asset instances.
+`Content Contract` - this is the onchain representation of a collection of assets.
 
 ## Specification 
 

@@ -1,5 +1,5 @@
 ---
-title: Public Metadata for Asset
+title: Public Token Metadata
 status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
@@ -8,7 +8,7 @@ updated: 2021-08-23
 version: 0.1
 ---
 
-Public Metadata for Asset
+# Public Token Metadata
 
 ## Simple Summary
 
@@ -16,15 +16,18 @@ This is the schema for the public metadata for assets in the content contract. T
 
 ## Abstract
 
-The public metadata is standardized so that all front-end applications know how to parse and show information about the NFTs. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
+The public asset metadata is standardized so that all front-end applications know how to parse and show information about each asset. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
+
+## Terminology 
+
+`Asset` - the data stored representing in-game tradable items. 
+`Tokens` - these are the on-chain representation of ownership of asset instances.
+`Public Metadata` - metadata that is retrievable by any user
+`Private metadata` - metadata that is only retrievable by the token holder for that asset (and developers wallets)
 
 ## Specification 
 
 The public metadata schema will be based on the [ERC-1155 schema](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema).
-
-## Rationale
-
-The public metadata schema is based on the ERC-1155 schema in order to be usable by other marketplaces in the cryptospace. This allows gamers to buy and sell their assets on any marketplace that supports ERC-1155 assets. 
 
 ```
 {
@@ -59,6 +62,12 @@ The public metadata schema is based on the ERC-1155 schema in order to be usable
 }
 ```
 
+## Rationale
+
+The public metadata schema is based on the ERC-1155 schema in order to be usable by other marketplaces in the cryptospace. This allows gamers to buy and sell their assets on any marketplace that supports ERC-1155 assets. 
+
+We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
+
 ### Todo: Localization
 Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosly based on the ERC1155 metadata localization schema. 
 
@@ -67,9 +76,10 @@ Similarly to the ERC1155 metadata json schema, metadata localization should be s
 Give sample of the standard in use.
 
 Notes: 
-* Asset `images` may default to our default asset type images we provide if the user decides not to place their own.
+* Asset `images` may default to our default asset type images we provide if the user decides not to place their own. This could also be null (or optional). If it's null, the marketplace or developer may need to link to image placeholders. 
 * `custom` assets may be game specific and may not be supported by other rawrshak-enabled games.
 * Currently, the following are the first asset standards to be supported. Over time, as more types of assets get standardized, more types and subtypes will be added.
+* `subtypes` may have asset-specific requirements and private metadata specific. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. This may be deemed by the community as standardized logo dimensions.
 
 ### Text Type
 #### Title Subtype
@@ -117,6 +127,17 @@ Notes:
 }
 ```
 
+#### Background Music Subtype
+```
+{
+	"name": "Character's theme",
+	"description": "…",
+	"image": "<default text icon uri on arweave>",
+	"type": "audio",
+	"subtype": "bgm"
+}
+```
+
 #### Custom Subtype
 ```
 {
@@ -159,6 +180,17 @@ Notes:
 	"image": "<default text icon uri on arweave>",
 	"type": "image",
 	"subtype": "decal"
+}
+```
+
+#### Banner Subtype
+```
+{
+	"name": "Character Banner",
+	"description": "…",
+	"image": "<default text icon uri on arweave>",
+	"type": "image",
+	"subtype": "banner"
 }
 ```
 
