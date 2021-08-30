@@ -56,10 +56,10 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "string",
             "description": "The subtype of asset that the token is representing. The value depends on what the primary type of the asset is. This informs the hidden data reader if there are any special or custom data in the metadata that it can use. It will also inform the game on how to ideally use the asset."
         },
-		"asset-properties": {
-			"type": "object",
-			"description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
-		},
+        "asset-properties": {
+            "type": "object",
+            "description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
+        },
         "developer-properties": {
             "type": "object",
             "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
@@ -103,7 +103,7 @@ Notes:
 	"asset-properties": 
 	{
 		"title": "Big Achievement Title",
-		"description": "Success in Big Challenge. Player defeated Big Boss.",
+		"description": "Success in Big Challenge. Player defeated Big Boss."
 	},
 	"developer-properties":
 	{
