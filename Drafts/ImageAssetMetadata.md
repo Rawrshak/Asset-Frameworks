@@ -28,92 +28,21 @@ Image NFTs can be used in many different manners such as rewarding players with 
 
 We define the Image-based NFT standards for different sizes. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the standards for different purposes as intended as long as they adhere to the specific standard of each subtype. 
 
-Note: these dimensions are not final and can be increased or decreased depending on the game developer's requirements.
+Note: these dimensions are not final and can be increased or decreased depending on the community of game developer's requirements.
 
 ### Square Subtype
 
 The square subtype requires that the image texture has an aspect ratio of 1:1. It also requires the `textures` array to contain a 256x256 pixel image as the default. Other texture sizes may go up to 1024x1024 and as low as 48x48 pixels.
 
-```
-{
-    "title": "Asset Properties",
-    "type": "object",
-    "properties": {
-        "textures": {
-            "type": "object",
-            "description": "An array of texture objects"
-        }
-    }
-}
-
-{
-    "title": "Texture",
-    "type": "object",
-    "properties": {
-        "uri": {
-            "type": "string",
-            "description": "link to the texture object"
-        },
-        "height": {
-            "type": "int",
-            "description": "Height of the texture"
-        },
-        "width": {
-            "type": "int",
-            "description": "Width of the texture"
-        },
-        "content-type": {
-            "type": "string",
-            "description": "content type. Can be image/png, image/jpg, image/svg"
-        }
-    }
-}
-```
-
 ### HorizontalBanner Subtype
 
 The square subtype requires that the image texture has an aspect ratio of 2:1. It also requires the `textures` array to contain a 256x128 pixel image as the default. Other texture sizes may go up to 1024x512 and as low as 96x48 pixels.
-
-```
-{
-    "title": "Asset Properties",
-    "type": "object",
-    "properties": {
-        "textures": {
-            "type": "object",
-            "description": "An array of texture objects"
-        }
-    }
-}
-
-{
-    "title": "Texture",
-    "type": "object",
-    "properties": {
-        "uri": {
-            "type": "string",
-            "description": "link to the texture object"
-        },
-        "height": {
-            "type": "int",
-            "description": "Height of the texture"
-        },
-        "width": {
-            "type": "int",
-            "description": "Width of the texture"
-        },
-        "content-type": {
-            "type": "string",
-            "description": "content type. Can be image/png, image/jpg, image/svg"
-        }
-    }
-}
-```
 
 ### VerticalBanner Subtype
 
 The square subtype requires that the image texture has an aspect ratio of 1:2. It also requires the `textures` array to contain a 128x256 pixel image as the default. Other texture sizes may go up to 512x1024 and as low as 48x96 pixels.
 
+### Metadata Schema 
 ```
 {
     "title": "Asset Properties",
