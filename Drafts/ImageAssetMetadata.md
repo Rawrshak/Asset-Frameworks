@@ -36,37 +36,37 @@ The square subtype requires that the image texture has an aspect ratio of 1:1. I
 
 ```
 {
-	"title": "Asset Properties",
-	"type": "object",
-	"properties": {
-		"textures": {
-			"type": "object",
-			"description": "An array of texture objects"
-		}
-	}
+    "title": "Asset Properties",
+    "type": "object",
+    "properties": {
+        "textures": {
+            "type": "object",
+            "description": "An array of texture objects"
+        }
+    }
 }
 
 {
-	"title": "Texture",
-	"type": "object",
-	"properties": {
-		"uri": {
-			"type": "string",
-			"description": "link to the texture object"
-		},
-		"height": {
-			"type": "int",
-			"description": "Height of the texture"
-		},
-		"width": {
-			"type": "int",
-			"description": "Width of the texture"
-		},
-		"content-type": {
-			"type": "string",
-			"description": "content type. Can be image/png, image/jpg, image/svg"
-		}
-	}
+    "title": "Texture",
+    "type": "object",
+    "properties": {
+        "uri": {
+            "type": "string",
+            "description": "link to the texture object"
+        },
+        "height": {
+            "type": "int",
+            "description": "Height of the texture"
+        },
+        "width": {
+            "type": "int",
+            "description": "Width of the texture"
+        },
+        "content-type": {
+            "type": "string",
+            "description": "content type. Can be image/png, image/jpg, image/svg"
+        }
+    }
 }
 ```
 
@@ -76,37 +76,37 @@ The square subtype requires that the image texture has an aspect ratio of 2:1. I
 
 ```
 {
-	"title": "Asset Properties",
-	"type": "object",
-	"properties": {
-		"textures": {
-			"type": "object",
-			"description": "An array of texture objects"
-		}
-	}
+    "title": "Asset Properties",
+    "type": "object",
+    "properties": {
+        "textures": {
+            "type": "object",
+            "description": "An array of texture objects"
+        }
+    }
 }
 
 {
-	"title": "Texture",
-	"type": "object",
-	"properties": {
-		"uri": {
-			"type": "string",
-			"description": "link to the texture object"
-		},
-		"height": {
-			"type": "int",
-			"description": "Height of the texture"
-		},
-		"width": {
-			"type": "int",
-			"description": "Width of the texture"
-		},
-		"content-type": {
-			"type": "string",
-			"description": "content type. Can be image/png, image/jpg, image/svg"
-		}
-	}
+    "title": "Texture",
+    "type": "object",
+    "properties": {
+        "uri": {
+            "type": "string",
+            "description": "link to the texture object"
+        },
+        "height": {
+            "type": "int",
+            "description": "Height of the texture"
+        },
+        "width": {
+            "type": "int",
+            "description": "Width of the texture"
+        },
+        "content-type": {
+            "type": "string",
+            "description": "content type. Can be image/png, image/jpg, image/svg"
+        }
+    }
 }
 ```
 
@@ -116,37 +116,37 @@ The square subtype requires that the image texture has an aspect ratio of 1:2. I
 
 ```
 {
-	"title": "Asset Properties",
-	"type": "object",
-	"properties": {
-		"textures": {
-			"type": "array",
-			"description": "An array of texture objects"
-		}
-	}
+    "title": "Asset Properties",
+    "type": "object",
+    "properties": {
+        "textures": {
+            "type": "array",
+            "description": "An array of texture objects"
+        }
+    }
 }
 
 {
-	"title": "Texture",
-	"type": "object",
-	"properties": {
-		"uri": {
-			"type": "string",
-			"description": "link to the texture object"
-		},
-		"height": {
-			"type": "int",
-			"description": "Height of the texture"
-		},
-		"width": {
-			"type": "int",
-			"description": "Width of the texture"
-		},
-		"content-type": {
-			"type": "string",
-			"description": "content type. Can be image/png, image/jpg, image/svg"
-		}
-	}
+    "title": "Texture",
+    "type": "object",
+    "properties": {
+        "uri": {
+            "type": "string",
+            "description": "link to the texture object"
+        },
+        "height": {
+            "type": "int",
+            "description": "Height of the texture"
+        },
+        "width": {
+            "type": "int",
+            "description": "Width of the texture"
+        },
+        "content-type": {
+            "type": "string",
+            "description": "content type. Can be image/png, image/jpg, image/svg"
+        }
+    }
 }
 ```
 
@@ -165,71 +165,71 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
 ### Square Subtype
 ```
 {
-	"name": "Rawrshak Logo Decal",
-	"description": "Rawrshak Logo decal usable as a spray, emblem, or decal",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "square",
-	"asset-properties": 
-	[
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 256,
-			"width": 256,
-			"content-type": "image/png"
-		},
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 512,
-			"width": 512,
-			"content-type": "image/png"
-		},
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 1024,
-			"width": 1024,
-			"content-type": "image/png"
-		}
-	],
-	"developer-properties":
-	{
-		"creator-comments": "Rawrshak Represent!"
-	}
+    "name": "Rawrshak Logo Decal",
+    "description": "Rawrshak Logo decal usable as a spray, emblem, or decal",
+    "image": "<default text icon uri on arweave>",
+    "type": "text",
+    "subtype": "square",
+    "asset-properties": 
+    [
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 256,
+            "width": 256,
+            "content-type": "image/png"
+        },
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 512,
+            "width": 512,
+            "content-type": "image/png"
+        },
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 1024,
+            "width": 1024,
+            "content-type": "image/png"
+        }
+    ],
+    "developer-properties":
+    {
+        "creator-comments": "Rawrshak Represent!"
+    }
 }
 ```
 
 ### HorizontalBanner Subtype
 ```
 {
-	"name": "Rawrshak Banner",
-	"description": "Rawrshak Banner usable in banners, headers, etc.",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "horizontal-banner",
-	"asset-properties": 
-	[
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 128,
-			"width": 256,
-			"content-type": "image/png"
-		},
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 256,
-			"width": 512,
-			"content-type": "image/png"
-		},
-		{
-			"uri": "arweave.net/<tx>",
-			"height": 512,
-			"width": 1024,
-			"content-type": "image/png"
-		}
-	],
-	"developer-properties":
-	{
-		"creator-comments": "Rawrshak Banner Represent!"
-	}
+    "name": "Rawrshak Banner",
+    "description": "Rawrshak Banner usable in banners, headers, etc.",
+    "image": "<default text icon uri on arweave>",
+    "type": "text",
+    "subtype": "horizontal-banner",
+    "asset-properties": 
+    [
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 128,
+            "width": 256,
+            "content-type": "image/png"
+        },
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 256,
+            "width": 512,
+            "content-type": "image/png"
+        },
+        {
+            "uri": "arweave.net/<tx>",
+            "height": 512,
+            "width": 1024,
+            "content-type": "image/png"
+        }
+    ],
+    "developer-properties":
+    {
+        "creator-comments": "Rawrshak Banner Represent!"
+    }
 }
 ```

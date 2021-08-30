@@ -95,21 +95,21 @@ Notes:
 #### Title Subtype
 ```
 {
-	"name": "Big Achievement",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "title",
-	"asset-properties": 
-	{
-		"title": "Big Achievement Title",
-		"description": "Success in Big Challenge. Player defeated Big Boss."
-	},
-	"developer-properties":
-	{
-		"experience-gain": 50,
-		"level-requirement": 10,
-		"unlock-bonus": "AA4424"
-	}
+    "name": "Big Achievement",
+    "description": "…",
+    "image": "<default text icon uri on arweave>",
+    "type": "text",
+    "subtype": "title",
+    "asset-properties": 
+    {
+        "title": "Big Achievement Title",
+        "description": "Success in Big Challenge. Player defeated Big Boss."
+    },
+    "developer-properties":
+    {
+        "experience-gain": 50,
+        "level-requirement": 10,
+        "unlock-bonus": "AA4424"
+    }
 }
 ```

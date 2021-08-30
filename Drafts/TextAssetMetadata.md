@@ -99,39 +99,39 @@ Developers may also opt to impose profanity filters so be aware that the assets 
 ### Title Subtype
 ```
 {
-	"name": "Rawrshak Original Sinner Title",
-	"description": "Title bestowed to the earliest community members.",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "title",
-	"asset-properties": 
-	{
-		"title": "Rawrshak Original Sinner",
-		"description": "The earliest of Rawrshak believers. The one's willing to listen to an odd voice somewhere in the depths of the crypto space. These unique individuals supported the creation of the next reality during the depths of a world crisis.",
-	},
-	"developer-properties":
-	{
-		"creator-comments": "These guys seriously believed in me when no one else did. I just want to return the favor."
-	}
+    "name": "Rawrshak Original Sinner Title",
+    "description": "Title bestowed to the earliest community members.",
+    "image": "<default text icon uri on arweave>",
+    "type": "text",
+    "subtype": "title",
+    "asset-properties": 
+    {
+        "title": "Rawrshak Original Sinner",
+        "description": "The earliest of Rawrshak believers. The one's willing to listen to an odd voice somewhere in the depths of the crypto space. These unique individuals supported the creation of the next reality during the depths of a world crisis.",
+    },
+    "developer-properties":
+    {
+        "creator-comments": "These guys seriously believed in me when no one else did. I just want to return the favor."
+    }
 }
 ```
 
 ### Lore Subtype
 ```
 {
-	"name": "Rawrshak's Reason for Existence Lore",
-	"description": "The reason why Rawrshak Exists",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "title",
-	"asset-properties": 
-	{
-		"title": "Rawrshak's Reason for Existence",
-		"description": "During the depths of the Covid crisis, the mental health of the creator was slowly deteriorating. Day-in, Day-out, his desire to work became less and less. Is this what I really want to do with my life? Yes, it's a comfortable life and one without worries.. But is this it? 150 more years of this? Do I not have something else to give to this world? Yes, it is the arrogance of man that lead me to think I can change the world, but isn't aiming for the impossible something worth doing? Fuck it, I want to try. Failure is always an option, BUT I need to try.",
-	},
-	"developer-properties":
-	{
-		"creator-comments": "TLDR, without traveling, friends, and worldy distractions, I realized my life was going to be monotonous for the rest of my life if nothing changed. I might as well aim for the moon! I have nothing to lose. And I'm extremely blessed that I have nothing to lose. Side note: I do think I will live another 150 years more."
-	}
+    "name": "Rawrshak's Reason for Existence Lore",
+    "description": "The reason why Rawrshak Exists",
+    "image": "<default text icon uri on arweave>",
+    "type": "text",
+    "subtype": "title",
+    "asset-properties": 
+    {
+        "title": "Rawrshak's Reason for Existence",
+        "description": "During the depths of the Covid crisis, the mental health of the creator was slowly deteriorating. Day-in, Day-out, his desire to work became less and less. Is this what I really want to do with my life? Yes, it's a comfortable life and one without worries.. But is this it? 150 more years of this? Do I not have something else to give to this world? Yes, it is the arrogance of man that lead me to think I can change the world, but isn't aiming for the impossible something worth doing? Fuck it, I want to try. Failure is always an option, BUT I need to try.",
+    },
+    "developer-properties":
+    {
+        "creator-comments": "TLDR, without traveling, friends, and worldy distractions, I realized my life was going to be monotonous for the rest of my life if nothing changed. I might as well aim for the moon! I have nothing to lose. And I'm extremely blessed that I have nothing to lose. Side note: I do think I will live another 150 years more."
+    }
 }
 ```
