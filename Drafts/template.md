@@ -8,7 +8,7 @@ updated: 2021-08-23
 version: 0.1
 ---
 
-Standard Template
+# Standard Template
 
 ## Simple Summary
 
@@ -18,9 +18,9 @@ Simple 1 or 2 sentence summary for the Standard
 
 Background Information for the Standard and other necessary info that the reader needs to know.
 
-## Motivation
+## Terminology 
 
-The motivation for why the standard is being created
+Any terms that the reader must know.
 
 ## Specification 
 

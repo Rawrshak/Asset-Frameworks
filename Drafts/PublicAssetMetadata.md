@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-08-23
-version: 0.1
+updated: 2021-08-29
+version: 0.2
 ---
 
 # Public Asset Metadata
@@ -17,6 +17,8 @@ This is the schema for the public metadata for assets in the content contract. T
 ## Abstract
 
 The public asset metadata is standardized so that all front-end applications know how to parse and show information about each asset. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
+
+Todo: The public metadata will now contain subcategory data that will be viewable by anyone. The reason in-game asset data should be public is because others won't be able to download and view the asset if it's only downloadable by the owner. I need to update this to include that data for each type and subtype of asset.
 
 ## Terminology 
 
@@ -54,7 +56,11 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "string",
             "description": "The subtype of asset that the token is representing. The value depends on what the primary type of the asset is. This informs the hidden data reader if there are any special or custom data in the metadata that it can use. It will also inform the game on how to ideally use the asset."
         },
-        "properties": {
+		"asset-properties": {
+			"type": "object",
+			"description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
+		},
+        "developer-properties": {
             "type": "object",
             "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
         }
@@ -68,6 +74,10 @@ The public metadata schema is based on the ERC-1155 schema in order to be usable
 
 We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
 
+`asset-properties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different standard for what the `asset-properties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
+
+`developer-properties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
+
 ### Todo: Localization
 Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosly based on the ERC1155 metadata localization schema. 
 
@@ -77,9 +87,9 @@ Give sample of the standard in use.
 
 Notes: 
 * Asset `images` may default to our default asset type images we provide if the user decides not to place their own. This could also be null (or optional). If it's null, the marketplace or developer may need to link to image placeholders. 
-* `custom` assets may be game specific and may not be supported by other rawrshak-enabled games.
+* `custom` subtype assets may be game specific and may not be supported by other rawrshak-enabled games.
 * Currently, the following are the first asset standards to be supported. Over time, as more types of assets get standardized, more types and subtypes will be added.
-* `subtypes` may have asset-specific requirements and private metadata specific. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. This may be deemed by the community as standardized logo dimensions.
+* `subtypes` may have asset-specific requirements. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. This may be deemed by the community as standardized logo dimensions. `title` subtype may have a `title` character limit of 40 characters and description of 500 characters whereas `lore` subtype may have a `title` character limit of 40 with description limit of 5000. These character limits allow developers to allocate the specific space so all `title` and `lore` assets can fit when displayed.
 
 ### Text Type
 #### Title Subtype
@@ -89,130 +99,17 @@ Notes:
 	"description": "…",
 	"image": "<default text icon uri on arweave>",
 	"type": "text",
-	"subtype": "title"
-}
-```
-
-#### Lore 
-```
-{
-	"name": "Character's Background",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "text",
-	"subtype": "lore"
-}
-```
-
-### Audio Type
-#### SoundEffect Subtype
-```
-{
-	"name": "Character's Death Scream",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "audio",
-	"subtype": "soundeffect"
-}
-```
-
-#### Voice Line Subtype
-```
-{
-	"name": "Character's Quote",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "audio",
-	"subtype": "voiceline"
-}
-```
-
-#### Background Music Subtype
-```
-{
-	"name": "Character's theme",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "audio",
-	"subtype": "bgm"
-}
-```
-
-#### Custom Subtype
-```
-{
-	"name": "Develoepr-specific audio",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "audio",
-	"subtype": "custom"
-}
-```
-
-### Image Type
-#### Standard Subtype
-```
-{
-	"name": "Game Logo",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "image",
-	"subtype": "standard"
-}
-```
-
-#### Logo Subtype
-```
-{
-	"name": "Game Logo small",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "image",
-	"subtype": "logo"
-}
-```
-
-#### Decal Subtype
-```
-{
-	"name": "Character Decal",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "image",
-	"subtype": "decal"
-}
-```
-
-#### Banner Subtype
-```
-{
-	"name": "Character Banner",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "image",
-	"subtype": "banner"
-}
-```
-
-### Static Object Type
-#### Trophy Subtype
-```
-{
-	"name": "Winner winner chicken dinner",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "staticobject",
-	"subtype": "trophy"
-}
-```
-
-#### Custom Subtype
-```
-{
-	"name": "Character Statue Statue",
-	"description": "…",
-	"image": "<default text icon uri on arweave>",
-	"type": "staticobject",
-	"subtype": "custom"
+	"subtype": "title",
+	"asset-properties": 
+	{
+		"title": "Big Achievement Title",
+		"description": "Success in Big Challenge. Player defeated Big Boss.",
+	},
+	"developer-properties":
+	{
+		"experience-gain": 50,
+		"level-requirement": 10,
+		"unlock-bonus": "AA4424"
+	}
 }
 ```

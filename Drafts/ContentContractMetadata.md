@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/KEka3ZJNSn
 created: 2021-08-23
-updated: 2021-08-23
+updated: 2021-08-24
 version: 0.1
 ---
 
@@ -25,6 +25,8 @@ This metadata be used by all user-facing applications to display contract inform
 * `Asset` - the data stored representing in-game tradable items. 
 * `Token` - these are the on-chain representation of ownership of asset instances.
 * `Content Contract` - this is the onchain representation of a collection of assets.
+
+// Comment: Should I just kill the 'asset vs token' comparison?
 
 ## Specification 
 
