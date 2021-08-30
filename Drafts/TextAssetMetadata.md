@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-24
-updated: 2021-08-29
+updated: 2021-08-30
 version: 0.1
 ---
 
@@ -12,11 +12,11 @@ version: 0.1
 
 ## Simple Summary
 
-The Text Asset Metadata standard formalizes Text NFTs such as Titles and Lore between games.
+The Text Asset Metadata framework creates a common guideline for text-based NFTs such as Titles and Lore between games.
 
 ## Abstract
 
-The Text Asset Metadata standard is `asset-properties` object in the Public Asset Metadata. This contains the information for Text-based NFTs such as Titles and Lore. Text NFTs are used to convey in-game achievements and unlockable information about in-game content. Gamers are able to acquire these assets through gameplay or purchase. These NFTs may be used as keys or materials for future content such as unlockable content or asset crafting. 
+The Text Asset Metadata framework is `asset-properties` object in the Public Asset Metadata. This contains the information for Text-based NFTs such as Titles and Lore. Text NFTs are used to convey in-game achievements and unlockable information about in-game content. Gamers are able to acquire these assets through gameplay or purchase. These NFTs may be used as keys or materials for future content such as unlockable content or asset crafting. 
 
 ## Terminology 
 
@@ -27,7 +27,7 @@ The Text Asset Metadata standard is `asset-properties` object in the Public Asse
 
 ## Specification 
 
-We define the three Text-based NFT standards for different usage. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the standards for different purposes as intended as long as they adhere to the specific standard of each subtype. 
+We define the three Text-based NFT frameworks for different usage. However, these `subtypes` are merely guides when it comes to usage. The developers are free to use the frameworks for different purposes as intended as long as they adhere to the specific requirements of each subtype so that they can be loaded by games in the Rawrshak ecosystem. 
 
 ### Title Subtype
 ```

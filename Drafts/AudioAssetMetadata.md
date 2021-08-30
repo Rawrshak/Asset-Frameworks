@@ -12,11 +12,11 @@ version: 0.1
 
 ## Simple Summary
 
-The Audio Asset Metadata standard formalizes Audio-based NFTs such as sound effects, character lines, and background music between games.
+The Audio Asset Metadata framework creates a common guideline for Audio-based NFTs such as sound effects, character lines, and background music between games.
 
 ## Abstract
 
-The Audio Asset Metadata standard is `asset-properties` object in the Public Asset Metadata. This contains the information for Audio-based NFTs. This creates a commont metadata format so that game developers can easily parse metadata for audio NFTs for usage in-game. This allows players to unlocked audio assets from one game or world and use them wherever it is applicable.
+The Audio Asset Metadata framework is `asset-properties` object in the Public Asset Metadata. This contains the information for Audio-based NFTs. This creates a common metadata format so that game developers can easily parse metadata for audio NFTs for usage in-game. This allows players to unlocked audio assets from one game or world and use them wherever it is applicable.
 
 Audio NFTs can be used in many different manners such as rewarding players with short sound effects, character lines, background music, shouts, quotes, etc. Players and content creators may also create their own audio NFTs that they can bring into their games to show their unique content. 
 
@@ -28,11 +28,11 @@ Audio NFTs can be used in many different manners such as rewarding players with 
 
 ## Specification 
 
-We define the Audio-based NFT standards for different audio duration. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the standards for different purposes as intended as long as they adhere to the specific standard of each subtype. 
+We define the Audio-based NFT frameworks for different audio duration. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the frameworks for different purposes as intended as long as they adhere to the specific requirements of each subtype. 
 
 Note: these audio duration requirements are not final and can be changed upon community game developer / content creator review. These are merely starting points for discussion proposed by Rawrshak.
 
-Note: Unity has great flexibility on which audio assets should be kept in memory at all times. The game developer should honor the requirements for the standard in order to optimize memory usage. 
+Note: Unity has great flexibility on which audio assets should be kept in memory at all times. The game developer should honor the requirements for the framework in order to optimize memory usage. 
 
 Note: Each game must know what engine and platform they are running on. They must know which audio package to download and load for their game.
 

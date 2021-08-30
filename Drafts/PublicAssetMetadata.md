@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-08-29
+updated: 2021-08-30
 version: 0.2
 ---
 
@@ -16,7 +16,7 @@ This is the schema for the public metadata for assets in the content contract. T
 
 ## Abstract
 
-The public asset metadata is standardized so that all front-end applications know how to parse and show information about each asset. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
+The public asset metadata is a metadata framework that all front-end applications know how to parse and show information about each asset. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
 
 Todo: The public metadata will now contain subcategory data that will be viewable by anyone. The reason in-game asset data should be public is because others won't be able to download and view the asset if it's only downloadable by the owner. I need to update this to include that data for each type and subtype of asset.
 
@@ -74,7 +74,7 @@ The public metadata schema is based on the ERC-1155 schema in order to be usable
 
 We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
 
-`asset-properties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different standard for what the `asset-properties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
+`asset-properties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different frameworks for what the `asset-properties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
 
 `developer-properties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
 
@@ -83,13 +83,11 @@ Similarly to the ERC1155 metadata json schema, metadata localization should be s
 
 ## Samples
 
-Give sample of the standard in use.
-
 Notes: 
 * Asset `images` may default to our default asset type images we provide if the user decides not to place their own. This could also be null (or optional). If it's null, the marketplace or developer may need to link to image placeholders. 
 * `custom` subtype assets may be game specific and may not be supported by other rawrshak-enabled games.
-* Currently, the following are the first asset standards to be supported. Over time, as more types of assets get standardized, more types and subtypes will be added.
-* `subtypes` may have asset-specific requirements. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. This may be deemed by the community as standardized logo dimensions. `title` subtype may have a `title` character limit of 40 characters and description of 500 characters whereas `lore` subtype may have a `title` character limit of 40 with description limit of 5000. These character limits allow developers to allocate the specific space so all `title` and `lore` assets can fit when displayed.
+* Currently, the following are the first asset frameworks to be supported. Over time, as more types of assets are proposed or requested, more types and subtypes will be added.
+* `subtypes` may have asset-specific requirements. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. Eventually, the community will want to set a standard dimensions for specific things like logos or gamer emblems. `title` subtype may have a `title` character limit of 40 characters and description of 500 characters whereas `lore` subtype may have a `title` character limit of 40 with description limit of 5000. These character limits allow developers to allocate the specific space so all `title` and `lore` assets can fit when displayed.
 
 ### Text Type
 #### Title Subtype

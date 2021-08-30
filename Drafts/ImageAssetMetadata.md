@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-29
-updated: 2021-08-29
+updated: 2021-08-30
 version: 0.1
 ---
 
@@ -12,11 +12,11 @@ version: 0.1
 
 ## Simple Summary
 
-The Image Asset Metadata standard formalizes Image-based NFTs such as Logos, Sprays, and Emblems between games.
+The Image Asset Metadata framework creates a common guideline for Image-based NFTs such as Logos, Sprays/Decals, Emblems, Banners, and others between games.
 
 ## Abstract
 
-The Image Asset Metadata standard is `asset-properties` object in the Public Asset Metadata. This contains the information for Image-based NFTs. This creates a commont metadata format so that game developers can easily parse metadata for image NFTs for display in-game. This allows players to take their image nfts and use them wherever it is applicable.
+The Image Asset Metadata framework is `asset-properties` object in the Public Asset Metadata. This contains the information for Image-based NFTs. This creates a commont metadata format so that game developers can easily parse metadata for image NFTs for display in-game. This allows players to take their image nfts and use them wherever it is applicable.
 
 Image NFTs can be used in many different manners such as rewarding players with emblems, logos, sprays, or decals. Players may also create their own image NFTs that they can bring into their games to show their unique content. Game developers may also use Image NFTs as a way to reward players with in-game artwork.
 
@@ -26,7 +26,7 @@ Image NFTs can be used in many different manners such as rewarding players with 
 
 ## Specification 
 
-We define the Image-based NFT standards for different sizes. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the standards for different purposes as intended as long as they adhere to the specific standard of each subtype. 
+We define the Image-based NFT frameworks for different sizes. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the framework for different purposes as intended as long as they adhere to the specific requirements of each subtype. 
 
 Note: these dimensions are not final and can be increased or decreased depending on the community of game developer's requirements.
 
@@ -36,11 +36,15 @@ The square subtype requires that the image texture has an aspect ratio of 1:1. I
 
 ### HorizontalBanner Subtype
 
-The square subtype requires that the image texture has an aspect ratio of 2:1. It also requires the `textures` array to contain a 256x128 pixel image as the default. Other texture sizes may go up to 1024x512 and as low as 96x48 pixels.
+The horizontal banner subtype requires that the image texture has an aspect ratio of 2:1. It also requires the `textures` array to contain a 256x128 pixel image as the default. Other texture sizes may go up to 1024x512 and as low as 96x48 pixels.
 
 ### VerticalBanner Subtype
 
-The square subtype requires that the image texture has an aspect ratio of 1:2. It also requires the `textures` array to contain a 128x256 pixel image as the default. Other texture sizes may go up to 512x1024 and as low as 48x96 pixels.
+The vertical banner subtype requires that the image texture has an aspect ratio of 1:2. It also requires the `textures` array to contain a 128x256 pixel image as the default. Other texture sizes may go up to 512x1024 and as low as 48x96 pixels.
+
+### Custom Subtype
+
+The custom subtype doesn't have a requirement for aspect ratio and doesn't have a default texture requirement dimension. The creator is free to choose what they want to use in their games and NFT. The custom subtype, however, may not be loadable in other games aside from the creator's game. The dimensions must still be a power of 2.
 
 ### Metadata Schema 
 ```
@@ -81,7 +85,9 @@ The square subtype requires that the image texture has an aspect ratio of 1:2. I
 
 ## Rationale
 
-`Unity Textures` require that dimension sizes should be powers of 2 on each side, (that is, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048 pixels (px), and so on). It is possible to use non-power of two dimensions but it requires more memory and is slower for the GPU to sample. To simplify things, the standard is requiring power of 2 for both dimensions. 
+`Unity Textures` require that dimension sizes should be powers of 2 on each side, (that is, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048 pixels (px), and so on). It is possible to use non-power of two dimensions but it requires more memory and is slower for the GPU to sample. To simplify things, the framework is requiring power of 2 for both dimensions. 
+
+This may or may not be the case for `Unreal Engine` textures but for simplicity, we will keep the Power of 2 requirement for now.
 
 `uri` for each texture is what is loaded by the game engine. The `height` and `width` must correspond to the downloaded image texture, otherwise, it will not be loaded. It is up to the game developer on how the texture is used whether it be as a decal, a user image, a logo, a banner, etc. The game developer also determines whether to load the image as a texture and assign it to a material (3D Project) or load it as a Sprite (2D project). 
 
