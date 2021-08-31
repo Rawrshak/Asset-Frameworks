@@ -16,7 +16,7 @@ The Audio Asset Metadata framework creates a common guideline for Audio-based NF
 
 ## Abstract
 
-The Audio Asset Metadata framework is `asset-properties` object in the Public Asset Metadata. This contains the information for Audio-based NFTs. This creates a common metadata format so that game developers can easily parse metadata for audio NFTs for usage in-game. This allows players to unlocked audio assets from one game or world and use them wherever it is applicable.
+The Audio Asset Metadata framework is `assetProperties` object in the Public Asset Metadata. This contains the information for Audio-based NFTs. This creates a common metadata format so that game developers can easily parse metadata for audio NFTs for usage in-game. This allows players to unlocked audio assets from one game or world and use them wherever it is applicable.
 
 Audio NFTs can be used in many different manners such as rewarding players with short sound effects, character lines, background music, shouts, quotes, etc. Players and content creators may also create their own audio NFTs that they can bring into their games to show their unique content. 
 
@@ -89,19 +89,19 @@ The background music subtype requires that the audio file has a maximum duration
             "type": "string",
             "description": "uri to the downloadable file or audio package"
         },
-        "content-type": {
+        "contentType": {
             "type": "string",
             "description": "content type. Can be audio/mpeg, audio/wav, audio/ogg, audio/x-aiff"
         },
-        "duration-ms": {
+        "durationMs": {
             "type": "int",
             "description": "duration of the audio clip in milliseconds"
         },
-        "channel-count": {
+        "channelCount": {
             "type": "int",
             "description": "channel count of the audio clip"
         },
-        "sample-rate": {
+        "sampleRateHz": {
             "type": "int",
             "description-hz": "sample rate of the audio clip in hz"
         },
@@ -113,7 +113,7 @@ The background music subtype requires that the audio file has a maximum duration
 
 For the audio asset metadata, the developer can add as many audio packages to the NFT as they need. Each `audio` subtype has its own specific requirements so that game developers know how to properly load assets and when/how to use them in their game. The specific requirements for each audio subtype is `duration` and load type. The sound effects and shout subtypes should be kept in memory when loaded in game so the gamers may use them whenever possible. The character lines and background music subtype should be loaded on demand and the developer may choose when to load them in-game. Limiting `duration` for each subtype specifies each subtype's use case and limits the asset file size.
 
-Other audio data such as `duration-ms`, `channel-count`, and `sample-rate-hz` is specific information for the game developer for loading the audio clip.
+Other audio data such as `durationMs`, `channelCount`, and `sampleRateHz` is specific information for the game developer for loading the audio clip.
 
 The `engine` and `compression` allows the developer to filter assets and determine which file best to load. If the game developer cannot load any of the files, the NFT will not be loaded. The developer may also opt to add an unpackaged version (`engine` = `none`, `compression` = `raw`) that can be used by front-ends to preview an asset. These unpackaged version isn't packaged for any specific game engine.
 
@@ -125,10 +125,10 @@ For this draft, we propose the following default audio type per game engine that
     "engine": "unity",
     "compression": "compressed"
     "uri": "arweave.net/<transaction-id>",
-    "content-type": "audio/wav",
-    "duration-ms": 1000,
-    "channel-count": 1,
-    "sample-rate-hz": 44100
+    "contentType": "audio/wav",
+    "durationMs": 1000,
+    "channelCount": 1,
+    "sampleRateHz": 44100
 }
 ```
 
@@ -144,39 +144,39 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "image": "<default text icon uri on arweave>",
     "type": "audio",
     "subtype": "sound-effect",
-    "asset-properties": 
+    "assetProperties": 
     [
         {
             "engine": "none",
             "compression": "raw"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/wav",
-            "duration-ms": "500",
-            "channel-count": 1,
-            "sample-rate-hz": 44100
+            "contentType": "audio/wav",
+            "durationMs": "500",
+            "channelCount": 1,
+            "sampleRateHz": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/wav",
-            "duration-ms": "500",
-            "channel-count": 1,
-            "sample-rate-hz": 44100
+            "contentType": "audio/wav",
+            "durationMs": "500",
+            "channelCount": 1,
+            "sampleRateHz": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/mp3",
-            "duration-ms": "500",
-            "channel-count": 2,
-            "sample-rate-hz": 48000
+            "contentType": "audio/mp3",
+            "durationMs": "500",
+            "channelCount": 2,
+            "sampleRateHz": 48000
         },
     ],
     "developer-properties":
     {
-        "creator-comments": "Unique Rawrshak Ping!"
+        "creatorComments": "Unique Rawrshak Ping!"
     }
 }
 ```
@@ -189,39 +189,39 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "image": "<default text icon uri on arweave>",
     "type": "audio",
     "subtype": "background-music",
-    "asset-properties": 
+    "assetProperties": 
     [
         {
             "engine": "none",
             "compression": "raw"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/wav",
-            "duration-ms": "90000",
-            "channel-count": 2,
-            "sample-rate-hz": 44100
+            "contentType": "audio/wav",
+            "durationMs": "90000",
+            "channelCount": 2,
+            "sampleRateHz": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/wav",
-            "duration-ms": "90000",
-            "channel-count": 2,
-            "sample-rate-hz": 44100
+            "contentType": "audio/wav",
+            "durationMs": "90000",
+            "channelCount": 2,
+            "sampleRateHz": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed"
             "uri": "arweave.net/<transaction-id>",
-            "content-type": "audio/mp3",
-            "duration-ms": "90000",
-            "channel-count": 2,
-            "sample-rate-hz": 44100
+            "contentType": "audio/mp3",
+            "durationMs": "90000",
+            "channelCount": 2,
+            "sampleRateHz": 44100
         },
     ],
     "developer-properties":
     {
-        "creator-comments": "Some opening song that introduces Rawrshak"
+        "creatorComments": "Some opening song that introduces Rawrshak"
     }
 }
 ```

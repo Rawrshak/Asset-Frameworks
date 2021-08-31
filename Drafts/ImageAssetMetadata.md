@@ -16,7 +16,7 @@ The Image Asset Metadata framework creates a common guideline for Image-based NF
 
 ## Abstract
 
-The Image Asset Metadata framework is `asset-properties` object in the Public Asset Metadata. This contains the information for Image-based NFTs. This creates a commont metadata format so that game developers can easily parse metadata for image NFTs for display in-game. This allows players to take their image nfts and use them wherever it is applicable.
+The Image Asset Metadata framework is `assetProperties` object in the Public Asset Metadata. This contains the information for Image-based NFTs. This creates a commont metadata format so that game developers can easily parse metadata for image NFTs for display in-game. This allows players to take their image nfts and use them wherever it is applicable.
 
 Image NFTs can be used in many different manners such as rewarding players with emblems, logos, sprays, or decals. Players may also create their own image NFTs that they can bring into their games to show their unique content. Game developers may also use Image NFTs as a way to reward players with in-game artwork.
 
@@ -75,7 +75,7 @@ The custom subtype doesn't have a requirement for aspect ratio and doesn't have 
             "type": "int",
             "description": "Width of the texture"
         },
-        "content-type": {
+        "contentType": {
             "type": "string",
             "description": "content type. Can be image/png, image/jpg, image/svg"
         }
@@ -91,7 +91,7 @@ This may or may not be the case for `Unreal Engine` textures but for simplicity,
 
 `uri` for each texture is what is loaded by the game engine. The `height` and `width` must correspond to the downloaded image texture, otherwise, it will not be loaded. It is up to the game developer on how the texture is used whether it be as a decal, a user image, a logo, a banner, etc. The game developer also determines whether to load the image as a texture and assign it to a material (3D Project) or load it as a Sprite (2D project). 
 
-The game developer will use the `height`, `width`, and `content-type` to determine which texture they wish to load. 
+The game developer will use the `height`, `width`, and `contentType` to determine which texture they wish to load. 
 
 These `subtypes` are not final and may be updated. More `subtypes` may also be proposed by game developers and content creators. 
 
@@ -105,30 +105,30 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "image": "<default text icon uri on arweave>",
     "type": "text",
     "subtype": "square",
-    "asset-properties": 
+    "assetProperties": 
     [
         {
             "uri": "arweave.net/<tx>",
             "height": 256,
             "width": 256,
-            "content-type": "image/png"
+            "contentType": "image/png"
         },
         {
             "uri": "arweave.net/<tx>",
             "height": 512,
             "width": 512,
-            "content-type": "image/png"
+            "contentType": "image/png"
         },
         {
             "uri": "arweave.net/<tx>",
             "height": 1024,
             "width": 1024,
-            "content-type": "image/png"
+            "contentType": "image/png"
         }
     ],
     "developer-properties":
     {
-        "creator-comments": "Rawrshak Represent!"
+        "creatorComments": "Rawrshak Represent!"
     }
 }
 ```
@@ -141,30 +141,30 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "image": "<default text icon uri on arweave>",
     "type": "text",
     "subtype": "horizontal-banner",
-    "asset-properties": 
+    "assetProperties": 
     [
         {
             "uri": "arweave.net/<tx>",
             "height": 128,
             "width": 256,
-            "content-type": "image/png"
+            "contentType": "image/png"
         },
         {
             "uri": "arweave.net/<tx>",
             "height": 256,
             "width": 512,
-            "content-type": "image/png"
+            "contentType": "image/png"
         },
         {
             "uri": "arweave.net/<tx>",
             "height": 512,
             "width": 1024,
-            "content-type": "image/png"
+            "contentType": "image/png"
         }
     ],
     "developer-properties":
     {
-        "creator-comments": "Rawrshak Banner Represent!"
+        "creatorComments": "Rawrshak Banner Represent!"
     }
 }
 ```

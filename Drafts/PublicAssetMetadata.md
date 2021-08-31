@@ -56,7 +56,7 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "string",
             "description": "The subtype of asset that the token is representing. The value depends on what the primary type of the asset is. This informs the hidden data reader if there are any special or custom data in the metadata that it can use. It will also inform the game on how to ideally use the asset."
         },
-        "asset-properties": {
+        "assetProperties": {
             "type": "object",
             "description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
         },
@@ -74,7 +74,7 @@ The public metadata schema is based on the ERC-1155 schema in order to be usable
 
 We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
 
-`asset-properties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different frameworks for what the `asset-properties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
+`assetProperties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different frameworks for what the `assetProperties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
 
 `developer-properties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
 
@@ -98,7 +98,7 @@ Notes:
     "image": "<default text icon uri on arweave>",
     "type": "text",
     "subtype": "title",
-    "asset-properties": 
+    "assetProperties": 
     {
         "title": "Big Achievement Title",
         "description": "Success in Big Challenge. Player defeated Big Boss."
