@@ -148,7 +148,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     [
         {
             "engine": "none",
-            "compression": "raw"
+            "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "durationMs": "500",
@@ -157,7 +157,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
         },
         {
             "engine": "unity",
-            "compression": "compressed"
+            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "durationMs": "500",
@@ -166,13 +166,13 @@ For the Unity engine, the default compression should be 'compressed', default fi
         },
         {
             "engine": "unity",
-            "compression": "compressed"
+            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
             "durationMs": "500",
             "channelCount": 2,
             "sampleRateHz": 48000
-        },
+        }
     ],
     "developer-properties":
     {
@@ -193,7 +193,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     [
         {
             "engine": "none",
-            "compression": "raw"
+            "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "durationMs": "90000",
@@ -202,7 +202,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
         },
         {
             "engine": "unity",
-            "compression": "compressed"
+            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "durationMs": "90000",
@@ -211,13 +211,13 @@ For the Unity engine, the default compression should be 'compressed', default fi
         },
         {
             "engine": "unity",
-            "compression": "compressed"
+            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
             "durationMs": "90000",
             "channelCount": 2,
             "sampleRateHz": 44100
-        },
+        }
     ],
     "developer-properties":
     {

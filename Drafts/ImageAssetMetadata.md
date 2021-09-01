@@ -103,7 +103,7 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "name": "Rawrshak Logo Decal",
     "description": "Rawrshak Logo decal usable as a spray, emblem, or decal",
     "image": "<default text icon uri on arweave>",
-    "type": "text",
+    "type": "image",
     "subtype": "square",
     "assetProperties": 
     [
@@ -139,7 +139,7 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "name": "Rawrshak Banner",
     "description": "Rawrshak Banner usable in banners, headers, etc.",
     "image": "<default text icon uri on arweave>",
-    "type": "text",
+    "type": "image",
     "subtype": "horizontal-banner",
     "assetProperties": 
     [
