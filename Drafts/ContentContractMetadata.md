@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/KEka3ZJNSn
 created: 2021-08-23
-updated: 2021-08-30
+updated: 2021-09-09
 version: 0.1
 ---
 
@@ -57,6 +57,10 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
             "type": "string",
             "description": "Person, Group of People, or Company that owns this contract if different from the creator"
         },
+        "tags": {
+            "type": "array",
+            "description": "An array of strings that will be used as Tags for the content contract metadata."
+        }
         "properties": {
             "type": "object",
             "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
@@ -76,6 +80,8 @@ Similarly to the ERC1155 metadata json schema, metadata localization should be s
 
 `creator` and `owner` are human readable names to identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should always show the creator address for the contract to verify contract legitimacy. 
 
+`tags` is an array of strings that the front end will use to organize the contracts.
+
 `properties` is an additional field where developers and content creators can add their own additional information specific to their project or creations.
 
 ## Samples
@@ -89,6 +95,11 @@ An example of the Content Contract metadata json file follows:
     "image": "https://arweave.net/9KvpWZFGq1rD0slJYbe54-cQ34RTDHmNHiuqJk__AB8",
     "creator": "Rawrshak",
     "owner": "Rawrshak",
+    "tags": [
+        "Rawrshak",
+        "Test",
+        "Role-Playing Game"
+    ],
     "properties": {
         "simple_property": "example value",
         "rich_property": {

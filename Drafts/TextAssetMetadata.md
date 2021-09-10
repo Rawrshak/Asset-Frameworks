@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-24
-updated: 2021-08-30
+updated: 2021-09-09
 version: 0.1
 ---
 
@@ -102,6 +102,11 @@ Developers may also opt to impose profanity filters so be aware that the assets 
     "name": "Rawrshak Original Sinner Title",
     "description": "Title bestowed to the earliest community members.",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Title",
+        "Early Rawrshak Supporter"
+    ],
     "type": "text",
     "subtype": "title",
     "assetProperties": 
@@ -122,6 +127,11 @@ Developers may also opt to impose profanity filters so be aware that the assets 
     "name": "Rawrshak's Reason for Existence Lore",
     "description": "The reason why Rawrshak Exists",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Lore",
+        "Early Rawrshak Supporter"
+    ],
     "type": "text",
     "subtype": "title",
     "assetProperties": 

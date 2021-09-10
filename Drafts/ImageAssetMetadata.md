@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-29
-updated: 2021-08-30
+updated: 2021-09-09
 version: 0.1
 ---
 
@@ -103,6 +103,11 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "name": "Rawrshak Logo Decal",
     "description": "Rawrshak Logo decal usable as a spray, emblem, or decal",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Logo",
+        "Summer Collection"
+    ],
     "type": "image",
     "subtype": "square",
     "assetProperties": 
@@ -139,6 +144,11 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     "name": "Rawrshak Banner",
     "description": "Rawrshak Banner usable in banners, headers, etc.",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Logo Banner",
+        "Summer Collection"
+    ],
     "type": "image",
     "subtype": "horizontal-banner",
     "assetProperties": 

@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30
-updated: 2021-08-30
+updated: 2021-09-09
 version: 0.1
 ---
 
@@ -142,6 +142,11 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "name": "Rawrshak Unlock Sound Effect",
     "description": "Sound effect whenever a user unlocks a Rawrshak NFT",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Sound Effect",
+        "X-Collab"
+    ],
     "type": "audio",
     "subtype": "sound-effect",
     "assetProperties": 
@@ -187,6 +192,11 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "name": "Rawrshak Opening Theme",
     "description": "Rawrshak Opening Song - Jump into the Madness",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "BGM",
+        "Summer Collection"
+    ],
     "type": "audio",
     "subtype": "background-music",
     "assetProperties": 

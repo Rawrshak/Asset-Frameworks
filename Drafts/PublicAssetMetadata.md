@@ -4,7 +4,7 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-08-30
+updated: 2021-09-09
 version: 0.2
 ---
 
@@ -48,6 +48,10 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "string",
             "description": "A URI pointing to a resource with mime type image/* of an asset this token represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
         },
+        "tags": {
+            "type": "array",
+            "description": "An array of strings that will be used as Tags for the content contract metadata."
+        }
         "type": {
             "type": "string",
             "description": "The type of asset that the token is representing. This informs the hidden data reader on how to parse the token's hidden metadata. Values may be text, image, audio, static_object, or other future types that is added."
@@ -96,6 +100,11 @@ Notes:
     "name": "Big Achievement",
     "description": "…",
     "image": "<default text icon uri on arweave>",
+    "tags": [
+        "Rawrshak",
+        "Title",
+        "Major Achievement"
+    ],
     "type": "text",
     "subtype": "title",
     "assetProperties": 
