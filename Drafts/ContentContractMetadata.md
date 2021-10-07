@@ -49,6 +49,10 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
             "type": "string",
             "description": "A URI pointing to a resource with mime type image/* of a logo or symbol for the content this contract represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
         },
+        "game": {
+            "type": "string",
+            "description": "The game that this content contract is attached to, if any. Empty string if not attached to any game."
+        },
         "creator": {
             "type": "string",
             "description": "Person, Group of People, or Company that created this contract"
@@ -80,6 +84,8 @@ Similarly to the ERC1155 metadata json schema, metadata localization should be s
 
 `creator` and `owner` are human readable names to identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should always show the creator address for the contract to verify contract legitimacy. 
 
+`game` is an optional property. It notifies the front end about whether or not this contract is a collection of assets or has a specific Game that the content contract is attached to.
+
 `tags` is an array of strings that the front end will use to organize the contracts.
 
 `properties` is an additional field where developers and content creators can add their own additional information specific to their project or creations.
@@ -93,6 +99,7 @@ An example of the Content Contract metadata json file follows:
     "name": "Rawrshak Default Assets",
     "description": "Lorem ipsum...",
     "image": "https://arweave.net/9KvpWZFGq1rD0slJYbe54-cQ34RTDHmNHiuqJk__AB8",
+    "game": "",
     "creator": "Rawrshak",
     "owner": "Rawrshak",
     "tags": [
