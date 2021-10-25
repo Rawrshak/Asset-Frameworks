@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-24
-updated: 2021-09-09
-version: 0.1
+updated: 2021-10-25
+version: 0.2
 ---
 
 # Text Asset Metadata
@@ -41,7 +41,7 @@ We define the three Text-based NFT frameworks for different usage. However, thes
         },
         "description": {
             "type": "string",
-            "description": "Description of the asset which this token represents. It adds a deeper description of the asset to differenciate the Title. In-game title description reads this as it contains a fixed max character limit of 500."
+            "description": "Description of the asset which this token represents. It adds a deeper description of the asset to differentiate the Title. In-game title description reads this as it contains a fixed max character limit of 500."
         }
     }
 }
@@ -114,7 +114,7 @@ Developers may also opt to impose profanity filters so be aware that the assets 
         "title": "Rawrshak Original Sinner",
         "description": "The earliest of Rawrshak believers. The one's willing to listen to an odd voice somewhere in the depths of the crypto space. These unique individuals supported the creation of the next reality during the depths of a world crisis.",
     },
-    "developer-properties":
+    "devProperties":
     {
         "creatorComments": "These guys seriously believed in me when no one else did. I just want to return the favor."
     }
@@ -134,14 +134,14 @@ Developers may also opt to impose profanity filters so be aware that the assets 
     ],
     "type": "text",
     "subtype": "title",
-    "assetProperties": 
+    "assetProperties":
     {
         "title": "Rawrshak's Reason for Existence",
-        "description": "During the depths of the Covid crisis, the mental health of the creator was slowly deteriorating. Day-in, Day-out, his desire to work became less and less. Is this what I really want to do with my life? Yes, it's a comfortable life and one without worries.. But is this it? 150 more years of this? Do I not have something else to give to this world? Yes, it is the arrogance of man that lead me to think I can change the world, but isn't aiming for the impossible something worth doing? Fuck it, I want to try. Failure is always an option, BUT I need to try.",
+        "description": "During the depths of the Covid crisis, the mental health of the creator was slowly deteriorating. Day-in, Day-out, his desire to work became less and less. Is this what I really want to do with my life? Yes, it's a comfortable life and one without worries.. But is this it? 150 more years of this? Do I not have something else to give to this world? Yes, it is the arrogance of man that lead me to think I can change the world, but isn't aiming for the impossible something worth doing? Fuck it, I want to try. We can always fail and rise again, but not taking arms dooms you to a life of mediocrity.",
     },
-    "developer-properties":
+    "devProperties":
     {
-        "creatorComments": "TLDR, without traveling, friends, and worldy distractions, I realized my life was going to be monotonous for the rest of my life if nothing changed. I might as well aim for the moon! I have nothing to lose. And I'm extremely blessed that I have nothing to lose. Side note: I do think I will live another 150 years more."
+        "creatorComments": "TLDR, without traveling, friends, and worldly distractions, I realized my life was going to be monotonous for the rest of my life if nothing changed. I might as well aim for the moon! I have nothing to lose. And I'm extremely blessed that I have nothing to lose. Side note: I do think I will live another 150 years more."
     }
 }
 ```

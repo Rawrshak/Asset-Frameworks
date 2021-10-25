@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/KEka3ZJNSn
 created: 2021-08-23
-updated: 2021-09-09
-version: 0.1
+updated: 2021-10-22
+version: 0.2
 ---
 
 # Content Contract Metadata
@@ -16,17 +16,15 @@ This is the schema for the content contract metadata. This metadata contains inf
 
 ## Abstract
 
-A Content Contract is a collection of assets tied together by a common grouping such as assets by the same creator, assets beloning to the same game, or other specific grouping. The contract metadata will contain information relating to the asset collection such as the name of the collect, description, a logo, the creator and the current owner. 
+A Content Contract is a collection of assets tied together by a common grouping such as assets by the same creator, assets belonging to the same game, or other specific grouping. The contract metadata will contain information relating to the asset collection such as the name of the collect, description, a logo, the creator and the current owner. 
 
-This metadata be used by all user-facing applications to display contract information. The ERC-1155 only contains information about the individual assets on the contract but not the overall information about the collection. We aim to fill in this gap.
+This metadata be used by all user-facing applications to display content contract information. The ERC-1155 contract only contains information about the individual assets on the contract but not the overall information about the collection. The aim is to fill in this gap.
 
 ## Terminology
 
 * `Asset` - the data stored representing in-game tradable items. 
 * `Token` - these are the on-chain representation of ownership of asset instances.
-* `Content Contract` - this is the onchain representation of a collection of assets.
-
-// Comment: Should I just kill the 'asset vs token' comparison?
+* `Content Contract` - A smart contract that contains the on-chain representation of a collection of assets.
 
 ## Specification 
 
@@ -51,7 +49,7 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
         },
         "game": {
             "type": "string",
-            "description": "The game that this content contract is attached to, if any. Empty string if not attached to any game."
+            "description": "An optional string that links a specific game to this content contract. This may be used by the front-end to organize game-specific contracts."
         },
         "creator": {
             "type": "string",
@@ -73,22 +71,24 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
 }
 ```
 
-The content contract metadata will be uploaded to permanent storage such as Arweave so data regarding the contract is persistent. This cannot be updated over time and will be permanent once uploaded. 
+The content contract metadata will be uploaded to permanent storage, such as Arweave, so data regarding the contract is persistent. This cannot be updated over time and will be permanent once uploaded. 
 
 ### Todo: Localization
-Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosly based on the ERC1155 metadata localization schema. 
+Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosely based on the ERC1155 metadata localization schema. 
 
 ## Rationale
 
 `name`, `description`, and `image` are directly copied from the ERC-1155 metadata as they are basic information to set up the contract's information page and marketplace store. Gamers would want to know where specific assets came from and not just info about the asset itself.
 
-`creator` and `owner` are human readable names to identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should always show the creator address for the contract to verify contract legitimacy. 
+`creator` and `owner` are human readable names to identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should always show the creator address for the contract to verify contract legitimacy. `creator` and `owner` may be different.
+
+`game` is an optional string for game developers to link the Content Contract to their game. For Content Creators, this is not necessary. This will be used by the front end to organize game-specific content contracts.
 
 `game` is an optional property. It notifies the front end about whether or not this contract is a collection of assets or has a specific Game that the content contract is attached to.
 
 `tags` is an array of strings that the front end will use to organize the contracts.
 
-`properties` is an additional field where developers and content creators can add their own additional information specific to their project or creations.
+`properties` is an additional field where developers and content creators can add their own additional information specific to their project or creations. Please note that only `simple_properties` are parsable by the Rawrshak Dapps. Complex properties may not be viewable in the front-end UI. The developer must also implement their own in-game parser for these properties. Examples on how to extend metadata parsing is available in the game engine packages.
 
 ## Samples
 

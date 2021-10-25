@@ -12,3 +12,13 @@ A draft will need to go through a RIP governance vote in order to become final.
 Final Specifications here are final. Any improvements will need to be a drafted and go through an RIP
 before updating the final spec. These need to be backward compatible so take care not to break existing
 assets in the process.
+
+## Updates
+### 10.25.2021
+- Minor updates and spelling fixes to all metadata drafts
+
+### 08.23.2021
+- Initial Check-in
+- Created Content Contract Metadata
+- Created Public Asset Metadata template
+- Created Image, Audio, and Text metadata

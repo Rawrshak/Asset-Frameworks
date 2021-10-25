@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-09-09
-version: 0.2
+updated: 2021-10-25
+version: 0.3
 ---
 
 # Public Asset Metadata
@@ -64,7 +64,7 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "object",
             "description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
         },
-        "developer-properties": {
+        "devProperties": {
             "type": "object",
             "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
         }
@@ -74,16 +74,16 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
 
 ## Rationale
 
-The public metadata schema is based on the ERC-1155 schema in order to be usable by other marketplaces in the cryptospace. This allows gamers to buy and sell their assets on any marketplace that supports ERC-1155 assets. 
+The public metadata schema is based on the ERC-1155 schema in order to be usable by other marketplaces in the crypto space. This allows gamers to buy and sell their assets on any marketplace that supports ERC-1155 assets. 
 
 We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
 
 `assetProperties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different frameworks for what the `assetProperties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
 
-`developer-properties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
+`devProperties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
 
 ### Todo: Localization
-Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosly based on the ERC1155 metadata localization schema. 
+Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosely based on the ERC1155 metadata localization schema. 
 
 ## Samples
 
@@ -112,7 +112,7 @@ Notes:
         "title": "Big Achievement Title",
         "description": "Success in Big Challenge. Player defeated Big Boss."
     },
-    "developer-properties":
+    "devProperties":
     {
         "experience-gain": 50,
         "level-requirement": 10,

@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30
-updated: 2021-09-09
-version: 0.1
+updated: 2021-10-22
+version: 0.2
 ---
 
 # Audio Asset Metadata
@@ -42,7 +42,7 @@ Format | Extension
 MPEG3 Layer 3 | .mp3
 Ogg Vorbis | .ogg
 Microsoft Wave | .wav
-Audio Interchangable File Format | .aiff / .aif
+Audio interchangeable File Format | .aiff / .aif
 
 ### Sound Effect Subtype
 
@@ -93,7 +93,7 @@ The background music subtype requires that the audio file has a maximum duration
             "type": "string",
             "description": "content type. Can be audio/mpeg, audio/wav, audio/ogg, audio/x-aiff"
         },
-        "durationMs": {
+        "duration": {
             "type": "int",
             "description": "duration of the audio clip in milliseconds"
         },
@@ -101,9 +101,9 @@ The background music subtype requires that the audio file has a maximum duration
             "type": "int",
             "description": "channel count of the audio clip"
         },
-        "sampleRateHz": {
+        "sampleRate": {
             "type": "int",
-            "description-hz": "sample rate of the audio clip in hz"
+            "description-hz": "sample rate of the audio clip in Hz"
         },
     }
 }
@@ -113,9 +113,11 @@ The background music subtype requires that the audio file has a maximum duration
 
 For the audio asset metadata, the developer can add as many audio packages to the NFT as they need. Each `audio` subtype has its own specific requirements so that game developers know how to properly load assets and when/how to use them in their game. The specific requirements for each audio subtype is `duration` and load type. The sound effects and shout subtypes should be kept in memory when loaded in game so the gamers may use them whenever possible. The character lines and background music subtype should be loaded on demand and the developer may choose when to load them in-game. Limiting `duration` for each subtype specifies each subtype's use case and limits the asset file size.
 
-Other audio data such as `durationMs`, `channelCount`, and `sampleRateHz` is specific information for the game developer for loading the audio clip.
+Other audio data such as `duration`, `channelCount`, and `sampleRate` is specific information for the game developer for loading the audio clip.
 
 The `engine` and `compression` allows the developer to filter assets and determine which file best to load. If the game developer cannot load any of the files, the NFT will not be loaded. The developer may also opt to add an unpackaged version (`engine` = `none`, `compression` = `raw`) that can be used by front-ends to preview an asset. These unpackaged version isn't packaged for any specific game engine.
+
+Once the metadata is loaded, the developer can choose which of the `assetProperties` to use if there is more than one.
 
 For this draft, we propose the following default audio type per game engine that an NFT should support. Each Audio NFT should have the following audio package and Rawrshak-enabled games should support it.
 
@@ -126,9 +128,9 @@ For this draft, we propose the following default audio type per game engine that
     "compression": "compressed"
     "uri": "arweave.net/<transaction-id>",
     "contentType": "audio/wav",
-    "durationMs": 1000,
+    "duration": 1000,
     "channelCount": 1,
-    "sampleRateHz": 44100
+    "sampleRate": 44100
 }
 ```
 
@@ -156,30 +158,30 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
-            "durationMs": "500",
+            "duration": "500",
             "channelCount": 1,
-            "sampleRateHz": 44100
+            "sampleRate": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
-            "durationMs": "500",
+            "duration": "500",
             "channelCount": 1,
-            "sampleRateHz": 44100
+            "sampleRate": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
-            "durationMs": "500",
+            "duration": "500",
             "channelCount": 2,
-            "sampleRateHz": 48000
+            "sampleRate": 48000
         }
     ],
-    "developer-properties":
+    "devProperties":
     {
         "creatorComments": "Unique Rawrshak Ping!"
     }
@@ -206,30 +208,30 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
-            "durationMs": "90000",
+            "duration": "90000",
             "channelCount": 2,
-            "sampleRateHz": 44100
+            "sampleRate": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
-            "durationMs": "90000",
+            "duration": "90000",
             "channelCount": 2,
-            "sampleRateHz": 44100
+            "sampleRate": 44100
         },
         {
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
-            "durationMs": "90000",
+            "duration": "90000",
             "channelCount": 2,
-            "sampleRateHz": 44100
+            "sampleRate": 44100
         }
     ],
-    "developer-properties":
+    "devProperties":
     {
         "creatorComments": "Some opening song that introduces Rawrshak"
     }
