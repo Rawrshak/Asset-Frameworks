@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-10-25
-version: 0.3
+updated: 2021-10-26
+version: 0.4
 ---
 
 # Public Asset Metadata
@@ -51,7 +51,7 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
         "tags": {
             "type": "array",
             "description": "An array of strings that will be used as Tags for the content contract metadata."
-        }
+        },
         "type": {
             "type": "string",
             "description": "The type of asset that the token is representing. This informs the hidden data reader on how to parse the token's hidden metadata. Values may be text, image, audio, static_object, or other future types that is added."
@@ -59,6 +59,10 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
         "subtype": {
             "type": "string",
             "description": "The subtype of asset that the token is representing. The value depends on what the primary type of the asset is. This informs the hidden data reader if there are any special or custom data in the metadata that it can use. It will also inform the game on how to ideally use the asset."
+        },
+        "nsfw": {
+            "type": "boolean",
+            "description": "NSFW indicates that a particular asset contains sexually explicit or other adult content."
         },
         "assetProperties": {
             "type": "object",
