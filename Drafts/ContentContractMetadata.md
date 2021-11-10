@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/KEka3ZJNSn
 created: 2021-08-23
-updated: 2021-10-22
-version: 0.2
+updated: 2021-10-31
+version: 0.3
 ---
 
 # Content Contract Metadata
@@ -16,7 +16,7 @@ This is the schema for the content contract metadata. This metadata contains inf
 
 ## Abstract
 
-A Content Contract is a collection of assets tied together by a common grouping such as assets by the same creator, assets belonging to the same game, or other specific grouping. The contract metadata will contain information relating to the asset collection such as the name of the collect, description, a logo, the creator and the current owner. 
+A Content Contract is a collection of assets tied together by a common grouping such as assets by the same creator, assets belonging to the same game, or other specific grouping. The contract metadata will contain information relating to the asset collection such as the name of the collect, description, a logo, and the creator. 
 
 This metadata be used by all user-facing applications to display content contract information. The ERC-1155 contract only contains information about the individual assets on the contract but not the overall information about the collection. The aim is to fill in this gap.
 
@@ -53,16 +53,12 @@ The content contract metadata schema will be loosely based on the [ERC-1155 sche
         },
         "creator": {
             "type": "string",
-            "description": "Person, Group of People, or Company that created this contract"
-        },
-        "owner": {
-            "type": "string",
-            "description": "Person, Group of People, or Company that owns this contract if different from the creator"
+            "description": "Person, group, or Company that created this contract"
         },
         "tags": {
             "type": "array",
             "description": "An array of strings that will be used as Tags for the content contract metadata."
-        }
+        },
         "properties": {
             "type": "object",
             "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
@@ -80,11 +76,9 @@ Similarly to the ERC1155 metadata json schema, metadata localization should be s
 
 `name`, `description`, and `image` are directly copied from the ERC-1155 metadata as they are basic information to set up the contract's information page and marketplace store. Gamers would want to know where specific assets came from and not just info about the asset itself.
 
-`creator` and `owner` are human readable names to identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should always show the creator address for the contract to verify contract legitimacy. `creator` and `owner` may be different.
+`creator` is set by the creator and identify the creator of the contract. However, this shouldn't be made as the main source of contract legitimacy. Any front-facing UI should use the `creatorAddress` from the subgraph. 
 
-`game` is an optional string for game developers to link the Content Contract to their game. For Content Creators, this is not necessary. This will be used by the front end to organize game-specific content contracts.
-
-`game` is an optional property. It notifies the front end about whether or not this contract is a collection of assets or has a specific Game that the content contract is attached to.
+`game` is an optional string for game developers to link the Content Contract to their game. For Content Creators, this is not necessary. This will be used by the front end to organize game-specific content contracts. `game` is an optional property. It notifies the front end about whether or not this contract is a collection of assets or has a specific Game that the content contract is attached to.
 
 `tags` is an array of strings that the front end will use to organize the contracts.
 
@@ -101,7 +95,6 @@ An example of the Content Contract metadata json file follows:
     "image": "https://arweave.net/9KvpWZFGq1rD0slJYbe54-cQ34RTDHmNHiuqJk__AB8",
     "game": "",
     "creator": "Rawrshak",
-    "owner": "Rawrshak",
     "tags": [
         "Rawrshak",
         "Test",
