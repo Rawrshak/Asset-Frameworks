@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30
-updated: 2021-10-22
-version: 0.2
+updated: 2021-11-10
+version: 0.3
 ---
 
 # Audio Asset Metadata
@@ -77,6 +77,10 @@ The background music subtype requires that the audio file has a maximum duration
     "title": "Audio",
     "type": "object",
     "properties": {
+        "name": {
+            "type": "string",
+            "description": "name of the AudioClip that's stored in the package"
+        },
         "engine": {
             "type": "string",
             "description": "engine which this package supports. Values include none, unity, and unreal. none refers to the raw, uncompressed, unpackaged file for use by dapps."
@@ -154,6 +158,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "assetProperties": 
     [
         {
+            "name": "unlockEffect.wav",
             "engine": "none",
             "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
@@ -163,6 +168,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "sampleRate": 44100
         },
         {
+            "name": "unlockEffectWav",
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
@@ -172,6 +178,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "sampleRate": 44100
         },
         {
+            "name": "unlockEffectMp3",
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
@@ -204,6 +211,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     "assetProperties": 
     [
         {
+            "name": "openingTheme.wav",
             "engine": "none",
             "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
@@ -213,6 +221,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "sampleRate": 44100
         },
         {
+            "name": "openingThemeWav",
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
@@ -222,6 +231,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
             "sampleRate": 44100
         },
         {
+            "name": "openingThemeMp3",
             "engine": "unity",
             "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
