@@ -34,18 +34,21 @@ Any terms that the reader must know.
 
 ## Specification 
 
-// Todo: update this
-Static 3D Object Assets should be small enough to be easily loadable by games. It is up to the developer on the levels of fidelity that they provide for the assets they create.
+Ideally, Static 3D Object Assets should be loadable by as many games as possible. However, there are very real limitations to what can and cannot be loaded by games on specific engines, platforms, render pipelines, etc. With that in mind, the proposed metadata should give the developer enough information to determine whether or not the Rawrshak asset can be loaded by their game. This metadata should include all the necessary information for each package targeting different platforms. 
 
-We propose specific base requirements so that assets may easily be loaded by less powerful machines.
+We propose specific base or default requirements so that assets may easily be loaded by less powerful machines.
 
-*Unity has different render pipelines* and asset materials may or may not be usable between different render pipelines. This needs investigation still. For now, we will ignore the High Definition Render Pipeline and Universal Render Pipeline and will only focus on the Build-in Render Pipeline. This is subject to change.
+### Minimum Rawrshak Asset Requirements:
+As of 11/12/2021, these are the minimum requirements for Static 3D Objects:
 
-`prefab-name` only contains one name. This means that when an asset is built, only one prefab will be built per asset. Please include all models, of more than 1, under one prefab. 
+Property | Information
+------ | ------
+Engine | Unity Engine
+Platform | Windows Standalone 64
+Render Pipeline | Built-in Render Pipeline
+Fidelity | Low
 
-Unity supports many different platforms and that each package built for one platform isn't usable for other platforms. Because of this, a developer will need to build their package for each specific platform that  the developer is targeting. 
-
-We recommend only building for the following platforms: "Android, Windows Desktop, iOS, WebGL.
+The asset must fit within one of the Asset Shape categories. Orientation and scale of the prefab must adhere to the specifications below.
 
 ### Supported Engines
 Name | Plans
@@ -58,7 +61,7 @@ Godot Engine | Future
 Unity Engine is the most flexible of the game engines and it is the first engine we're deciding to support. However, Unity Engine has several types of render pipelines. 3d objects packed in asset bundles don't necessarily work properly across different render pipelines. We will be targeting one specific render pipeline first and then expanding in the future. 
 
 ##### Supported Platforms
-Asset packages are platform specific. Game developers need to build and upload packages for the same asset for different platforms. Data is bundled, compressed, and formatted differently for different platforms due to hardware capabilities, software capabilities, and licenses.
+Asset packages are platform specific. Game developers need to build and upload packages for the same asset targeting different platforms. Data is bundled, compressed, and formatted differently for different platforms for different reasons such as hardware capabilities, software capabilities, different software licensing requirements, optimization strategies.
 
 Platform | Plans
 ------ | ------
@@ -68,6 +71,10 @@ Windows X64 | Supported
 WebGL | Supported
 
 ##### Supported Render Pipelines
+
+*Unity has different render pipelines* and asset materials may or may not be usable between different render pipelines. This is because each render pipeline uses different shader outputs and might not have the same features. Each render pipeline is suitable for different games and platforms.
+
+For now, we will ignore the High Definition Render Pipeline and Universal Render Pipeline and will only focus on the Built-in Render Pipeline. Support for other Unity pipelines and other game engine render pipelines will come soon.
 
 Name | Plans
 ------ | ------
@@ -139,6 +146,10 @@ Decorations are static 3d objects that are acquired by users. There is no specif
             "type": "string",
             "description": "platform refers to the operating system that the game is on. Values include android, ios, windows, and webgl."
         },
+        "renderPipeline": {
+            "type": "string",
+            "description": "renderPipeline refers to the specific rendering pipeline that is set for a game engine. values on this include brp (built-in render pipeline), urp (universal render pipeline), or hdrp (high-definition render pipeline)."
+        },
         "fidelity": {
             "type": "string",
             "description": "fidelity refers to the asset's quality, ease of download, and ease of loading. Values include low, medium, and high."
@@ -175,6 +186,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "windows",
             "fidelity": "low",
             "shape": "horizontaly",
@@ -183,6 +195,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "ios",
             "fidelity": "low",
             "shape": "horizontaly",
@@ -191,6 +204,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "android",
             "fidelity": "low",
             "shape": "horizontaly",
@@ -199,6 +213,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "webgl",
             "fidelity": "low",
             "shape": "horizontaly",
@@ -207,6 +222,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "windows",
             "fidelity": "medium",
             "shape": "horizontaly",
@@ -215,6 +231,7 @@ Define the reasons for the specification and why this is the solution we've come
         {
             "name": "rawr-trophy",
             "engine": "unity",
+            "renderPipeline": "brp",
             "platform": "high",
             "fidelity": "medium",
             "shape": "horizontaly",
