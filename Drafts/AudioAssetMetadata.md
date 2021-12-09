@@ -155,6 +155,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     ],
     "type": "audio",
     "subtype": "sound-effect",
+    "nsfw": "false",
     "assetProperties": 
     [
         {
@@ -208,6 +209,7 @@ For the Unity engine, the default compression should be 'compressed', default fi
     ],
     "type": "audio",
     "subtype": "background-music",
+    "nsfw": "false",
     "assetProperties": 
     [
         {

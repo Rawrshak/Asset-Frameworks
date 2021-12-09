@@ -112,6 +112,7 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
     ],
     "type": "image",
     "subtype": "square",
+    "nsfw": "false",
     "assetProperties": 
     [
         {

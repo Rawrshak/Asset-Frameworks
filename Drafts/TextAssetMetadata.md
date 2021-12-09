@@ -109,6 +109,7 @@ Developers may also opt to impose profanity filters so be aware that the assets 
     ],
     "type": "text",
     "subtype": "title",
+    "nsfw": "false",
     "assetProperties": 
     {
         "title": "Rawrshak Original Sinner",
@@ -134,6 +135,7 @@ Developers may also opt to impose profanity filters so be aware that the assets 
     ],
     "type": "text",
     "subtype": "title",
+    "nsfw": "false",
     "assetProperties":
     {
         "title": "Rawrshak's Reason for Existence",

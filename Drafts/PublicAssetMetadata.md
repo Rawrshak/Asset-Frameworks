@@ -111,6 +111,7 @@ Notes:
     ],
     "type": "text",
     "subtype": "title",
+    "nsfw": "false",
     "assetProperties": 
     {
         "title": "Big Achievement Title",

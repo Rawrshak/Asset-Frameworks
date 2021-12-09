@@ -197,6 +197,7 @@ The `shape` allows game developers to figure the general shape of a Rawrshak ass
     ],
     "type": "static3dobject",
     "subtype": "trophy",
+    "nsfw": "false",
     "assetProperties": 
     [
         {
