@@ -180,7 +180,8 @@ Decorations are static 3d objects that are acquired by users. There is no specif
 
 The `engine`, `renderPipeline`, and `platform` are properties that allow the game developer to filter the asset that they can load during runtime. These will be parsed by the subgraph and allow gamers to filter out assets they can use in a game.
 
-The `fidelity` is used to allow game developers to load higher quality versions of an asset if they wish to provide it.
+// gcbsumid - todo: discuss what fidelity does.
+The `fidelity` is used to allow game developers to load higher quality versions of an asset if they wish to provide it. Currently, fidelity only takes into account file size. 
 
 The `shape` allows game developers to figure the general shape of a Rawrshak asset. This allows developers to figure out which default asset to replace during runtime. 
 
