@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-11-09
-updated: 2021-11-13
-version: 0.1
+updated: 2022-01-31
+version: 0.2
 ---
 
 # Static 3D Object Asset Metadata
@@ -90,9 +90,7 @@ WebGL | Supported
 ### Levels of Fidelity
 We propose three levels of fidelity: Low-fidelity, Medium-fidelity, and High-fidelity. Low-fidelity is ideal for platform that have limited storage, memory, and CPU power. Mobile devices (Android and IOS) are the probable use-case for this. Low-fidelity assets allow for quick download and in-game loading. This is the recommended level of fidelity. Asset developers must support Low-Fidelity. Medium and High fidelity assets are for desktop platforms and should only be optional. Games expecting to be run on desktop or higher powered machines can load these assets by default if the developer or gamer chooses to do so.
 
-As of 11/13/21, we currently do not yet have a specific asset definition for the different Fidelity levels. We'd need to reach out to someone with more experience regarding this. This will be a framework and not a specific requirement as game developers should have the freedom to do what is best for their game. However, in order to make their assets useable in the ecosystem, they need to conform to a few guidelines. We'll most likely have some requirements per level such as file size and model vertex counts. 
-
-// Todo: Define the specific requirements and limits for Low, Medium, and High fidelity assets.
+As of 1/31/22, we currently only define fidelity with regards to the file size. We'd need to reach out to someone with more experience regarding this. This will be a framework and not a specific requirement as game developers should have the freedom to do what is best for their game. However, in order to make their assets useable in the ecosystem, they need to conform to a few guidelines. We'll most likely have some more requirements per level model vertex counts. Low will include assets less than or equal to 3mb. Medium will include assets greater than 3 mb but less than or equal to 10 mb. High will include assets anything greater than 10 mb.
 
 ### Asset Shapes
 There are several asset shapes (and default objects) that an asset must fit into. We provide bounding boxes to make sure an asset doesn't go beyond what the framework expects an asset's scale is to be. Based on an asset's shape, the game developer will place them in their game. The game developer is free to scale or rotate the prefab after loading, but game developers expect the asset's prefab to be within the shape's bounding box.
@@ -180,10 +178,9 @@ Decorations are static 3d objects that are acquired by users. There is no specif
 
 The `engine`, `renderPipeline`, and `platform` are properties that allow the game developer to filter the asset that they can load during runtime. These will be parsed by the subgraph and allow gamers to filter out assets they can use in a game.
 
-// gcbsumid - todo: discuss what fidelity does.
 The `fidelity` is used to allow game developers to load higher quality versions of an asset if they wish to provide it. Currently, fidelity only takes into account file size. 
 
-The `shape` allows game developers to figure the general shape of a Rawrshak asset. This allows developers to figure out which default asset to replace during runtime. 
+The `shape` allows game developers to figure the general shape of a Rawrshak asset. This allows developers to figure out which default asset to replace during runtime. It also gives soft guarantees that an asset will be within the shape's boundaries.
 
 ## Samples
 

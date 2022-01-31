@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30
-updated: 2021-11-10
-version: 0.3
+updated: 2022-01-31
+version: 0.4
 ---
 
 # Audio Asset Metadata
