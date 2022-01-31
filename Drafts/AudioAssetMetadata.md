@@ -4,8 +4,8 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30
-updated: 2021-11-10
-version: 0.3
+updated: 2022-01-31
+version: 0.4
 ---
 
 # Audio Asset Metadata
@@ -34,8 +34,6 @@ Note: these audio duration requirements are not final and can be changed upon co
 
 Note: Unity has great flexibility on which audio assets should be kept in memory at all times. The game developer should honor the requirements for the framework in order to optimize memory usage. 
 
-Note: Each game must know what engine and platform they are running on. They must know which audio package to download and load for their game.
-
 ### Supported Formats
 Format | Extension
 ------ | ------
@@ -60,6 +58,10 @@ The character lines subtype requires that the audio file has a maximum duration 
 
 The background music subtype requires that the audio file has a maximum duration of 300 seconds. Background Music assets are loaded per gamer and not shared during gameplay. They may also be loaded gradually or on demand. They shouldn't be kept in memory.
 
+### Custom Subtype
+
+The custom subtype doesn't have a maximum duration for the audio. The creator is free to choose what they want to use in their games and NFT. The custom subtype, however, may not be loadable in other games aside from the creator's game. It is up to the game developer whether or not to support custom assets from other games.
+
 ### Schema 
 ```
 {
@@ -79,19 +81,11 @@ The background music subtype requires that the audio file has a maximum duration
     "properties": {
         "name": {
             "type": "string",
-            "description": "name of the AudioClip that's stored in the package"
-        },
-        "engine": {
-            "type": "string",
-            "description": "engine which this package supports. Values include none, unity, and unreal. none refers to the raw, uncompressed, unpackaged file for use by dapps."
-        },
-        "compression": {
-            "type": "string",
-            "description": "specifies the compression algorithm used when the audio file was packaged. For Unity, these values can be PCM, ADPCM, or Compressed. Compressed is the default common value."
+            "description": "name of the audio file - optional"
         },
         "uri": {
             "type": "string",
-            "description": "uri to the downloadable file or audio package"
+            "description": "uri to the downloadable audio file"
         },
         "contentType": {
             "type": "string",
@@ -100,45 +94,21 @@ The background music subtype requires that the audio file has a maximum duration
         "duration": {
             "type": "int",
             "description": "duration of the audio clip in milliseconds"
-        },
-        "channelCount": {
-            "type": "int",
-            "description": "channel count of the audio clip"
-        },
-        "sampleRate": {
-            "type": "int",
-            "description-hz": "sample rate of the audio clip in Hz"
-        },
+        }
     }
 }
 ```
 
 ## Rationale
 
-For the audio asset metadata, the developer can add as many audio packages to the NFT as they need. Each `audio` subtype has its own specific requirements so that game developers know how to properly load assets and when/how to use them in their game. The specific requirements for each audio subtype is `duration` and load type. The sound effects and shout subtypes should be kept in memory when loaded in game so the gamers may use them whenever possible. The character lines and background music subtype should be loaded on demand and the developer may choose when to load them in-game. Limiting `duration` for each subtype specifies each subtype's use case and limits the asset file size.
+For the audio asset metadata, the developer can add as many audio asset properties to the NFT as they need so it provides the game developer a choice of which audio file to use. Each `audio` subtype has its own specific requirements so that game developers know how to properly load assets and when/how to use them in their game. The specific requirements for each audio subtype is `duration` and load type. The sound effects and shout subtypes should be kept in memory when loaded in game so the gamers may use them whenever possible. The character lines and background music subtype should be loaded on demand and the developer may choose when to load them in-game. Limiting `duration` for each subtype specifies each subtype's use case and limits the asset file size.
 
-Other audio data such as `duration`, `channelCount`, and `sampleRate` is specific information for the game developer for loading the audio clip.
-
-The `engine` and `compression` allows the developer to filter assets and determine which file best to load. If the game developer cannot load any of the files, the NFT will not be loaded. The developer may also opt to add an unpackaged version (`engine` = `none`, `compression` = `raw`) that can be used by front-ends to preview an asset. These unpackaged version isn't packaged for any specific game engine.
+Audio data such as `duration` is specific information for the game developer for loading the audio clip, which may or may not be used.
 
 Once the metadata is loaded, the developer can choose which of the `assetProperties` to use if there is more than one.
 
-For this draft, we propose the following default audio type per game engine that an NFT should support. Each Audio NFT should have the following audio package and Rawrshak-enabled games should support it.
+This metadata framework draft is simple and contains only the most basic required information for an audio asset. It may be updated later on, more information such as channelCount and sampleRate may be added. Feedback from game developers and sound engineers may be necessary to determine additional information that is necessary.
 
-#### Unity
-```
-{
-    "engine": "unity",
-    "compression": "compressed"
-    "uri": "arweave.net/<transaction-id>",
-    "contentType": "audio/wav",
-    "duration": 1000,
-    "channelCount": 1,
-    "sampleRate": 44100
-}
-```
-
-For the Unity engine, the default compression should be 'compressed', default file extension should be '.wav', and the default sample rate should be 44.1 kHz (standard). 
 
 ## Samples
 
@@ -160,33 +130,21 @@ For the Unity engine, the default compression should be 'compressed', default fi
     [
         {
             "name": "unlockEffect.wav",
-            "engine": "none",
-            "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "duration": "500",
-            "channelCount": 1,
-            "sampleRate": 44100
         },
         {
             "name": "unlockEffectWav",
-            "engine": "unity",
-            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "duration": "500",
-            "channelCount": 1,
-            "sampleRate": 44100
         },
         {
             "name": "unlockEffectMp3",
-            "engine": "unity",
-            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
             "duration": "500",
-            "channelCount": 2,
-            "sampleRate": 48000
         }
     ],
     "devProperties":
@@ -214,33 +172,21 @@ For the Unity engine, the default compression should be 'compressed', default fi
     [
         {
             "name": "openingTheme.wav",
-            "engine": "none",
-            "compression": "raw",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "duration": "90000",
-            "channelCount": 2,
-            "sampleRate": 44100
         },
         {
             "name": "openingThemeWav",
-            "engine": "unity",
-            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/wav",
             "duration": "90000",
-            "channelCount": 2,
-            "sampleRate": 44100
         },
         {
             "name": "openingThemeMp3",
-            "engine": "unity",
-            "compression": "compressed",
             "uri": "arweave.net/<transaction-id>",
             "contentType": "audio/mp3",
             "duration": "90000",
-            "channelCount": 2,
-            "sampleRate": 44100
         }
     ],
     "devProperties":
