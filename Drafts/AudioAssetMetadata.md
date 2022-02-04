@@ -22,9 +22,7 @@ Audio NFTs can be used in many different manners such as rewarding players with 
 
 ## Terminology 
 
-* `audio compression` - the reduction of certain types of audio data in order to shrink the file size.
-* `audio channels` - an audio channel refers to the independent audio signal which is collected or playback when a sound is recorded or played back in different spacial position. Mono refers to an audio file with only 1 channel. Stereo is the reproduction of sound using two or more independent audio channels in a way that creates the impression of sound coming from various directions.
-* `sample-rate` - sound waves are converted into data by taking a series of snapshot measurements, called samples. This information is then converted into binary data. The sample rate is the number of samples taken in an audio file per second. 44.1 kHz is the standard. 44.1 kHz refers to 44,100 samples per second in the audio file.
+* `content type` - the metadata used to indicate the original media type of the resource (prior to any content encoding applied for sending or storage)
 
 ## Specification 
 
@@ -38,9 +36,7 @@ Note: Unity has great flexibility on which audio assets should be kept in memory
 Format | Extension
 ------ | ------
 MPEG3 Layer 3 | .mp3
-Ogg Vorbis | .ogg
 Microsoft Wave | .wav
-Audio interchangeable File Format | .aiff / .aif
 
 ### Sound Effect Subtype
 
@@ -89,7 +85,7 @@ The custom subtype doesn't have a maximum duration for the audio. The creator is
         },
         "contentType": {
             "type": "string",
-            "description": "content type. Can be audio/mpeg, audio/wav, audio/ogg, audio/x-aiff"
+            "description": "content type. Can be audio/mpeg, audio/wav"
         },
         "duration": {
             "type": "int",
