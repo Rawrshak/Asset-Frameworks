@@ -1,35 +1,42 @@
 ---
 title: Public Asset Metadata
-status: Draft
+status: For Review
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-23
-updated: 2021-10-26
-version: 0.4
+updated: 2022-03-02
+version: 1.0
 ---
 
 # Public Asset Metadata
 
 ## Simple Summary
 
-This is the schema for the public metadata for assets in the content contract. This metadata contains public information about the asset and will be used by front-end applications.
+This is the schema for the public metadata for assets. This metadata contains information common between the different asset types and should be used by front-end applications to display asset information.
 
 ## Abstract
 
-The public asset metadata is a metadata framework that all front-end applications know how to parse and show information about each asset. This will also be downloaded, processed, and displayed in Rawrshak-enabled games.
+Unlike the ERC-721 standard, Rawrshak interoperable gaming Semi-Fungible Tokens (SFTs) requires the metadata extension. This allows game developers to define specific name and details about the assets which the gaming NFTs represent. 
 
-Todo: The public metadata will now contain subcategory data that will be viewable by anyone. The reason in-game asset data should be public is because others won't be able to download and view the asset if it's only downloadable by the owner. I need to update this to include that data for each type and subtype of asset.
+This Public Asset Metadata schema is loosely based on the [ERC-1155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema) and [ERC-721 metadata schema](https://eips.ethereum.org/EIPS/eip-721) so that these may be usable in other marketplaces and applications designed to parse ERC-1155 and ERC-721 NFT metadata.
+
+Games and applications should be able to parse and process an asset's public metadata. 
 
 ## Terminology 
 
 * `Asset` - the data stored representing in-game tradable items. 
-* `Tokens` - these are the on-chain representation of ownership of asset instances.
+* `Non-Fungible Tokens (NFTs)` - these are the on-chain representation of ownership of unique in-game assets.
+* `Semi-Fungible Tokens (SFTs)` - these are the on-chain representation of ownership of in-game assets instances. Rawrshak uses SFTs for in-game asset as they are more efficient. SFTs represent instances of in-game assets that are fungible but can be converted to a unique NFT (non-fungible). Assets are convertable between completely unique and fungible. 
 * `Public Metadata` - metadata that is retrievable by any user
-* `Private metadata` - metadata that is only retrievable by the token holder for that asset (and developers wallets)
+* `Private metadata` - metadata that is only retrievable by the token holder (and creator) for that asset
+* `Asset Creation` - Creating an asset means storing the asset details that an SFT represents, making it available for minting.
+* `Asset Minting` - Minting an asset means instantiating the tokens for an asset that can be distributed.
+* `Content Creators` - The creator of an asset
+* `Game Developer` - developers who create games that adopt these asset frameworks.
 
 ## Specification 
 
-The public metadata schema will be based on the [ERC-1155 schema](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema).
+The public metadata schema will be based on the [ERC-1155 schema](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1155.md#erc-1155-metadata-uri-json-schema), which in turn is loosely based on the [ERC-721 metadata schema](https://eips.ethereum.org/EIPS/eip-721).
 
 ```
 {
@@ -38,11 +45,15 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
     "properties": {
         "name": {
             "type": "string",
-            "description": "Name of the asset"
+            "description": "Identifies the asset to which this token represents"
         },
         "description": {
             "type": "string",
-            "description": "Description or lore of the asset which this token represents"
+            "description": "Describes the asset to which this token represents"
+        },
+        "decimals": {
+            "type": "integer",
+            "description": "Unsupported - The number of decimal places that the token amount should display - e.g. 18, means to divide the token amount by 1000000000000000000 to get its user representation."
         },
         "image": {
             "type": "string",
@@ -50,78 +61,82 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
         },
         "tags": {
             "type": "array",
-            "description": "An array of strings that will be used as Tags for the content contract metadata."
+            "description": "An array of strings used to filter or categorize an asset"
         },
         "type": {
             "type": "string",
-            "description": "The type of asset that the token is representing. This informs the hidden data reader on how to parse the token's hidden metadata. Values may be text, image, audio, static_object, or other future types that is added."
+            "description": "The major asset categorization of asset that the token is representing. This informs the metadata reader on how to parse the token's asset properties. Values may be text, image, audio, static_object, and other future types."
         },
         "subtype": {
             "type": "string",
-            "description": "The subtype of asset that the token is representing. The value depends on what the primary type of the asset is. This informs the hidden data reader if there are any special or custom data in the metadata that it can use. It will also inform the game on how to ideally use the asset."
+            "description": "The minor asset categorization of asset that the token is representing. The value depends on what the type property of the asset is. This informs the metadata reader of the expected in-game usage of the asset and specific requirements for the asset."
         },
         "nsfw": {
             "type": "boolean",
-            "description": "NSFW indicates that a particular asset contains sexually explicit or other adult content."
+            "description": "A flag that indicates that a particular asset contains explicit or adult content."
         },
-        "assetProperties": {
+        "properties": {
             "type": "object",
-            "description": "Asset properties that are specific to the type and subtype of the asset that is necessary to present the asset in-game."
-        },
-        "devProperties": {
-            "type": "object",
-            "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This is data specific to the creator's game or project."
+            "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This contains the Type-specific properties of the asset that is necessary to present the asset in-game. This may also feature additional data specific to the creator's game or project."
         }
     }
 }
 ```
 
+### Localization
+Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosely based on the ERC1155 metadata localization schema. 
+
 ## Rationale
 
 The public metadata schema is based on the ERC-1155 schema in order to be usable by other marketplaces in the crypto space. This allows gamers to buy and sell their assets on any marketplace that supports ERC-1155 assets. 
 
-We extended the schema by adding `type` and `subtype` to help front ends and marketplaces order and filter assets as they deem necessary. It also helps the in-game libraries determine how to parse the private metadata for in-game usage. 
+We extended the schema by adding `type` and `subtype` to help games identify and filter assets. The `subtype` gives games a hint on an asset's expected usage.
 
-`assetProperties` is an object that contains the data specific to the `type` and `subtype` asset. Each type/subtype of asset will have a different frameworks for what the `assetProperties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. 
+`image` property may default to Rawrshak's default asset type images provided if the user decides not to place their own. If it's null, the marketplace or developer may need to link to image placeholders. 
 
-`devProperties` is an object that contains data that the developer added specific to their game. This is similar to the `properties` object in the ERC-1155 schema. Developers may use this object to add additional information as necessary.
+`nsfw` gives games the ability to flag and filter explicit content that may not be suitable for all viewers. Content Creators are expected to flag their own assets.
 
-### Todo: Localization
-Similarly to the ERC1155 metadata json schema, metadata localization should be standardized to increase presentation uniformity across all languages. This should also be loosely based on the ERC1155 metadata localization schema. 
+`tags` is an array of strings that user-facing applications will use to organize assets. Tags must be lower-case.
+
+`properties` is an object that contains arbitrary properties that a developer can added specific to their asset. For the Rawrshak Asset Framework, `properties` will include an object containing the data specific to the `type` and `subtype` for an asset. Each type of asset will have a different frameworks for what the type-specific data object contains. We will create separate documents for each schema pertaining to the type/subtypes. Some types may have duplicate properties such as `description`. In these cases, the app developer should use the lower level property in the `properties`. If it is empty or undefined, the reader should use the higher level property.
+
+Developers may also include additional information to the `properties` object specific to their game or custom asset usage.
+
+Currently, the Rawrshak Asset Framework only supports `text`, `audio`, `image`, and `static_object` (static 3d object). In the future, the project aims to create frameworks for other in-game assets such as Chracters (skins), Animations (poses, emotes), Attachables (Hats, weapons, backpacks), Consumables (Area keys, lootboxes, DLC keys), etc. `custom` subtype assets may be creator or game specific and will probably be filtered out (unsupported) by other games.
+
+`subtypes` may have asset-specific requirements. For example, a `profile` subtype may require the texture/image to have an aspect ratio of 1:1 and under a specific size resolution. 
+
+`decimal` is unsupported making these assets not fractionalizable. It is kept in order to maintain compatibility with the ERC-1155 metadata schema.
 
 ## Samples
-
-Notes: 
-* Asset `images` may default to our default asset type images we provide if the user decides not to place their own. This could also be null (or optional). If it's null, the marketplace or developer may need to link to image placeholders. 
-* `custom` subtype assets may be game specific and may not be supported by other rawrshak-enabled games.
-* Currently, the following are the first asset frameworks to be supported. Over time, as more types of assets are proposed or requested, more types and subtypes will be added.
-* `subtypes` may have asset-specific requirements. For example, a `logo` subtype may require the texture/image to be a 256x256 image and have to be under a specific size. Eventually, the community will want to set a standard dimensions for specific things like logos or gamer emblems. `title` subtype may have a `title` character limit of 40 characters and description of 500 characters whereas `lore` subtype may have a `title` character limit of 40 with description limit of 5000. These character limits allow developers to allocate the specific space so all `title` and `lore` assets can fit when displayed.
 
 ### Text Type
 #### Title Subtype
 ```
 {
     "name": "Big Achievement",
-    "description": "…",
-    "image": "<default text icon uri on arweave>",
+    "description": "The user has a big achievement!",
+    "image": "https://arweave.net/1f_wbiCIxcAi_WU3tLjcW0mEs5mZtGW_iKx7_fHWFnw",
     "tags": [
-        "Rawrshak",
-        "Title",
-        "Major Achievement"
+        "rawrshak",
+        "title",
+        "big achievement"
     ],
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties": 
+    "properties":
     {
-        "title": "Big Achievement Title",
-        "description": "Success in Big Challenge. Player defeated Big Boss."
-    },
-    "devProperties":
-    {
+        "textProperties":
+        {
+            "title": "Big Achievement Title",
+            "description": "Success in Big Challenge. Player defeated Big Boss."
+        },
         "experience-gain": 50,
         "level-requirement": 10,
         "unlock-bonus": "AA4424"
     }
 }
 ```
+
+Notes: It is okay to have some missing information in the json object. For example, the metadata may be missing `decimals` or `properties`.

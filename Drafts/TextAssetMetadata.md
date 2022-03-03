@@ -1,47 +1,48 @@
 ---
 title: Text Asset Metadata
-status: Draft
+status: For Review
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-24
-updated: 2021-10-25
-version: 0.2
+updated: 2022-03-02
+version: 1.0
 ---
 
 # Text Asset Metadata
 
 ## Simple Summary
 
-The Text Asset Metadata framework creates a common guideline for text-based NFTs such as Titles and Lore between games.
+The Text Asset Metadata framework creates a guide for text-based asset tokens, with use-cases such as Player Titles and Game Lore.
 
 ## Abstract
 
-The Text Asset Metadata framework is `assetProperties` object in the Public Asset Metadata. This contains the information for Text-based NFTs such as Titles and Lore. Text NFTs are used to convey in-game achievements and unlockable information about in-game content. Gamers are able to acquire these assets through gameplay or purchase. These NFTs may be used as keys or materials for future content such as unlockable content or asset crafting. 
+The Text Asset framework defines a metadata standard for text-based assets and text asset use-cases. The text metadata standard is stored in the `properties` property in the Public Asset Metadata. 
+
+Text asset tokens can be used to convey in-game achievements, in-game lore, secret instructions, and other in-game content. Gamers acquire these asset tokens through gameplay or purchase. Game developers can use these text assets across games. It enables future, yet-to-be-created usage such as keys or crafting material for future content. 
 
 ## Terminology 
 
-* `assetProperties` - This is the object in the public asset metadata containing the Text NFT data.
-* `Achievements` - These are trophies meant to reward a player's in-game progress. 
-* `Title` - A text-based NFT reward used as accolades.
-* `Lore` - Additional in-game information about characters or other in-game content.
+* `Achievements` - Milestones or rewards in a player's in-game progress. 
+* `Title` - A text-based asset reward used as player accolades.
+* `Lore` - Additional in-game information about characters, places, and other in-game content.
 
 ## Specification 
 
-We define the three Text-based NFT frameworks for different usage. However, these `subtypes` are merely guides when it comes to usage. The developers are free to use the frameworks for different purposes as intended as long as they adhere to the specific requirements of each subtype so that they can be loaded by games in the Rawrshak ecosystem. 
+We define the three Text subtypes, each hinting different usage. The `subtypes` are hints towards game developers on how to import assets into their game. The developers are free to interpret and use incoming gamer assets for their own game's purposes. Game developers expect the asset data to adhere to a `type` and `subtype`'s data requirements (if any). Assets may be filtered out by games if they violate these requirements.
 
 ### Title Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
             "type": "string",
-            "description": "Name of the Reward. Titles can be used by players to show off their achievements. They can attach titles directly to their wallet as Primary or Secondary Titles. Titles are used by players to brag about achievements and make unique their status. The title is limited to 40 characters."
+            "description": "Name of the Reward. Titles can be used by players to show off their achievements. Titles are used by players to boast their achievements and cement unique their status. The title is limited to 40 characters."
         },
         "description": {
             "type": "string",
-            "description": "Description of the asset which this token represents. It adds a deeper description of the asset to differentiate the Title. In-game title description reads this as it contains a fixed max character limit of 500."
+            "description": "Description of the asset which this token represents. It adds a deeper description of the asset to differentiate the Title. The description requires a max character limit of 500."
         }
     }
 }
@@ -50,7 +51,7 @@ We define the three Text-based NFT frameworks for different usage. However, thes
 ### Lore Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
@@ -59,17 +60,16 @@ We define the three Text-based NFT frameworks for different usage. However, thes
         },
         "description": {
             "type": "string",
-            "description": "Description of the asset which this token represents. This can be used to add more background information about a character, a place, an event, or whatever in-game content. This is used to build a richer world through collectibles and unlockable lore. Lore's description is limited to 5000 characters."
+            "description": "Description of the asset which this token represents. This can be used to add more background information about a character, a place, an event, or other in-game content. This is used to build a richer world through collectibles and unlockable lore. The description requires a max character limit of 5000."
         }
     }
 }
 ```
 
-
 ### Custom Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
@@ -78,7 +78,7 @@ We define the three Text-based NFT frameworks for different usage. However, thes
         },
         "description": {
             "type": "string",
-            "description": "Description of the asset which this token represents. No character limit. This allows the developer to create whatever text based content they wish to add. This may not be supported by other games as it is custom to the creator."
+            "description": "Description of the asset which this token represents. Content creators can create any text based content and does not have a max character limit. Custom assets may not be supported by many games and applications in the ecosystem."
         }
     }
 }
@@ -86,38 +86,38 @@ We define the three Text-based NFT frameworks for different usage. However, thes
 
 ## Rationale
 
-For Text-based assets, we have two properties: `title` and `description`. Not to be confused for the `name` and `description` properties in the main metadata object, `title` and `description` inside the `assetProperties` object are the properties that should appear in-game when this asset is loaded by the user. 
+For Text-based assets, there are only two properties: `title` and `description`. Not to be confused for the `name` and `description` properties in the main metadata object, `title` and `description` inside the `textProperties` object are the properties that should appear in-game when this asset is loaded by the user. If any of these are null or undefined, a game developer should default to using the `name` and `description` from the main metadata object.
 
-The character limits for the `title` and `description` are there so that game developers may allocate the appropriate amount of space for when these assets are loaded. Any text-based nft that goes over the character limit will not be loaded by the in-game libraries and thus players won't be able to use them. 
+The character limits for the `title` and `description` are there so that game developers may allocate the appropriate amount of space in-game when these assets are loaded. Keep in mind that text-based assets violate the asset type or subtype requirements, in this case character limits, will not be loaded by the in-game libraries and thus players won't be able to use them. 
 
-The `custom` subtype is used for developers who wish to use text assets with no character limits. These may or may not be supported by ecosystem developers so be aware.
+The `custom` subtype is used for developers who wish to use text assets with no character limits. These may not be supported by ecosystem developers, aside from the developer's own game, due to unpredictable character sizes. It is up to the individual game developers on whether to support custom assets. Developers can also impose profanity filters so be aware that the assets may not be loaded for reasons other than character limits.
 
-Developers may also opt to impose profanity filters so be aware that the assets may not be loaded for reasons other than character limits.
+Text asset tokens data is plain-text and should not contain code or specially formatted. 
 
 ## Samples
 
 ### Title Subtype
 ```
 {
-    "name": "Rawrshak Original Sinner Title",
+    "name": "Rawrshak Alpha User Title",
     "description": "Title bestowed to the earliest community members.",
-    "image": "<default text icon uri on arweave>",
+    "image": "https://arweave.net/1f_wbiCIxcAi_WU3tLjcW0mEs5mZtGW_iKx7_fHWFnw",
     "tags": [
-        "Rawrshak",
-        "Title",
-        "Early Rawrshak Supporter"
+        "rawrshak",
+        "title",
+        "early rawrshak supporter"
     ],
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties": 
+    "properties":
     {
-        "title": "Rawrshak Original Sinner",
-        "description": "The earliest of Rawrshak believers. The one's willing to listen to an odd voice somewhere in the depths of the crypto space. These unique individuals supported the creation of the next reality during the depths of a world crisis.",
-    },
-    "devProperties":
-    {
-        "creatorComments": "These guys seriously believed in me when no one else did. I just want to return the favor."
+        "textProperties":
+        {
+            "title": "Rawrshak Alpha User",
+            "description": "Rawrshak's Alpha participant."
+        },
+        "creatorComments": "These are the earliest users of the Rawrshak project!"
     }
 }
 ```
@@ -125,25 +125,25 @@ Developers may also opt to impose profanity filters so be aware that the assets 
 ### Lore Subtype
 ```
 {
-    "name": "Rawrshak's Reason for Existence Lore",
-    "description": "The reason why Rawrshak Exists",
-    "image": "<default text icon uri on arweave>",
+    "name": "Rawrshak's Lore",
+    "description": "Some special Rawrshak Lore",
+    "image": "https://arweave.net/1f_wbiCIxcAi_WU3tLjcW0mEs5mZtGW_iKx7_fHWFnw",
     "tags": [
-        "Rawrshak",
-        "Lore",
-        "Early Rawrshak Supporter"
+        "rawrshak",
+        "lore",
+        "early rawrshak supporter"
     ],
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties":
+    "properties":
     {
-        "title": "Rawrshak's Reason for Existence",
-        "description": "During the depths of the Covid crisis, the mental health of the creator was slowly deteriorating. Day-in, Day-out, his desire to work became less and less. Is this what I really want to do with my life? Yes, it's a comfortable life and one without worries.. But is this it? 150 more years of this? Do I not have something else to give to this world? Yes, it is the arrogance of man that lead me to think I can change the world, but isn't aiming for the impossible something worth doing? Fuck it, I want to try. We can always fail and rise again, but not taking arms dooms you to a life of mediocrity.",
-    },
-    "devProperties":
-    {
-        "creatorComments": "TLDR, without traveling, friends, and worldly distractions, I realized my life was going to be monotonous for the rest of my life if nothing changed. I might as well aim for the moon! I have nothing to lose. And I'm extremely blessed that I have nothing to lose. Side note: I do think I will live another 150 years more."
+        "textProperties":
+        {
+            "title": "Rawrshak's Lore",
+            "description": "Something something, deep Rawrshak Lore.",
+        },
+        "creatorComments": "This asset lore should only go to the early users!"
     }
 }
 ```

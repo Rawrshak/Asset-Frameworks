@@ -14,6 +14,10 @@ before updating the final spec. These need to be backward compatible so take car
 assets in the process.
 
 ## Updates
+### 3.2.2021
+- Rename Content Contract to Collection Contract
+- Remove OGG and AIFF from the audio supported formats
+
 ### 10.25.2021
 - Minor updates and spelling fixes to all metadata drafts
 
