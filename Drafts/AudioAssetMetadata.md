@@ -1,6 +1,6 @@
 ---
 title: Audio Asset Metadata
-status: Draft
+status: For Review
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-30

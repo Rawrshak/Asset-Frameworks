@@ -1,6 +1,6 @@
 ---
 title: Collection Contract Metadata
-status: Draft
+status: For Review
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/KEka3ZJNSn
 created: 2021-08-23
