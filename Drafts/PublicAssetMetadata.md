@@ -134,7 +134,7 @@ Currently, the Rawrshak Asset Framework only supports `text`, `audio`, `image`, 
         "title": "Big Achievement Title",
         "description": "Success in Big Challenge. Player defeated Big Boss."
     },
-    "devProperties":
+    "properties":
     {
         "experience-gain": 50,
         "level-requirement": 10,
@@ -143,4 +143,4 @@ Currently, the Rawrshak Asset Framework only supports `text`, `audio`, `image`, 
 }
 ```
 
-Notes: It is okay to have some missing information in the json object. For example, the metadata may be missing `decimals` or `devProperties`.
+Notes: It is okay to have some missing information in the json object. For example, the metadata may be missing `decimals` or `properties`.

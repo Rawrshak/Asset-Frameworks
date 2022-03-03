@@ -4,47 +4,55 @@ status: Draft
 author: Christian Sumido (@gcbsumid)
 discussions-to: https://discord.gg/Ge2j4Cd65H
 created: 2021-08-29
-updated: 2021-10-22
-version: 0.2
+updated: 2022-03-02
+version: 1.0
 ---
 
 # Image Asset Metadata
 
 ## Simple Summary
 
-The Image Asset Metadata framework creates a common guideline for Image-based NFTs such as Logos, Sprays/Decals, Emblems, Banners, and others between games.
+The Image Asset Metadata framework creates a guide for Image-based asset tokens, with use-cases such as Profile images, Decals, and Banners.
 
 ## Abstract
 
-The Image Asset Metadata framework is `assetProperties` object in the Public Asset Metadata. This contains the information for Image-based NFTs. This creates a common metadata format so that game developers can easily parse metadata for image NFTs for display in-game. This allows players to take their image nfts and use them wherever it is applicable.
+The Image Asset Framework defines a metadata standard for image/2d-based assets and image asset use-cases. The image metadata standard is stored in the `assetProperties` property in the Public Asset Metadata. 
 
-Image NFTs can be used in many different manners such as rewarding players with emblems, logos, sprays, or decals. Players may also create their own image NFTs that they can bring into their games to show their unique content. Game developers may also use Image NFTs as a way to reward players with in-game artwork.
+The metadata standard allows game developers to easily parse metadata for image asset tokens for display in-game. This allows players to take their image assets and use them wherever it is applicable.
+
+Image asset tokens can be used in many different manners such as rewarding players with emblems, logos, sprays, decals, etc. Players may also create their own image assets that they can bring into their games to show their unique content. Game developers may also use Image assets as a way to reward players with in-game artwork.
 
 ## Terminology 
 
-* 
+* `Resolution` - this defines the amount of detail an image has. In general, it refers to the pixel count: N pixels width by M pixels height
+* `Aspect Ratio` - an attribute that describes the proportional relationship between the width of an image and its height.
+* `content type` - the metadata used to indicate the original media type of the resource (prior to any content encoding applied for sending or storage)
 
 ## Specification 
 
-We define the Image-based NFT frameworks for different sizes. However, these `subtypes` are merely suggestions when it comes to usage. The developers are free to use the framework for different purposes as intended as long as they adhere to the specific requirements of each subtype. 
+We define the Image-based asset frameworks for different in-game use cases. The `subtypes` are hints towards game developers on how to import and load assets into their game. Developers are free to interpret the framework and use the incoming gamer assets for their game's purposes. There are no specific resolution requirements, but creators should keep in mind that game developers may cap the maximum resolution they are willing to load for efficiency. Consider making images at a width between 256 and 1024 pixels.
 
-Note: these dimensions are not final and can be increased or decreased depending on the community of game developer's requirements.
+### Profile Subtype
 
-### Square Subtype
+The profile subtype is used for user profile images. An existing Art-NFT and PFP can be wrapped into this image subtype. The profile subtype requires that the image texture has an aspect ratio of 1:1. Ideally, the default resolution is 256x256, but a creator may provide other resolutions if desired. 
 
-The square subtype requires that the image texture has an aspect ratio of 1:1. It also requires the `textures` array to contain a 256x256 pixel image as the default. Other texture sizes may go up to 1024x1024 and as low as 48x48 pixels.
+Game developers can use image assets of this subtype to display a gamer's profile image, guild emblems, project or game logos, etc.
+
+### Decal Subtype
+
+The decal subtype requires that the image texture have an aspect ratio of between 2:1 and 1:2. This type of asset allows a user to display an image in-game such as decals, sprays, guild emblems, etc. 
 
 ### HorizontalBanner Subtype
 
-The horizontal banner subtype requires that the image texture has an aspect ratio of 2:1. It also requires the `textures` array to contain a 256x128 pixel image as the default. Other texture sizes may go up to 1024x512 and as low as 96x48 pixels.
+The horizontal banner subtype requires that the image texture has an aspect ratio greater than 1.5:1. This type of asset can be used for in-game things like billboards, profile banners, advertisments, etc.
 
 ### VerticalBanner Subtype
 
-The vertical banner subtype requires that the image texture has an aspect ratio of 1:2. It also requires the `textures` array to contain a 128x256 pixel image as the default. Other texture sizes may go up to 512x1024 and as low as 48x96 pixels.
+The vertical banner subtype requires that the image texture has an aspect ratio greater than of 1:1.5. This type of asset can be used for in-game things like billboards, profile banners, advertisments, etc.
 
 ### Custom Subtype
 
-The custom subtype doesn't have a requirement for aspect ratio and doesn't have a default texture requirement dimension. The creator is free to choose what they want to use in their games and NFT. The custom subtype, however, may not be loadable in other games aside from the creator's game. The dimensions must still be a power of 2.
+The custom subtype doesn't have a requirement for aspect ratio and doesn't have a default texture requirement dimension. The creator is free to experiment with different formats ideal for their game. The custom subtype, however, may not be loadable in other games aside from the creator's game. The dimensions, ideally, would still be a power of 2.
 
 ### Metadata Schema 
 ```
@@ -69,15 +77,15 @@ The custom subtype doesn't have a requirement for aspect ratio and doesn't have 
         },
         "height": {
             "type": "int",
-            "description": "Height of the texture in Pixels"
+            "description": "[Optional] Height of the texture in Pixels"
         },
         "width": {
             "type": "int",
-            "description": "Width of the texture in Pixels"
+            "description": "[Optional] Width of the texture in Pixels"
         },
         "contentType": {
             "type": "string",
-            "description": "content type. Can be image/png, image/jpg, image/svg"
+            "description": "[Optional] Content type. Can be image/png, image/jpg, image/svg"
         }
     }
 }
@@ -85,56 +93,49 @@ The custom subtype doesn't have a requirement for aspect ratio and doesn't have 
 
 ## Rationale
 
-`Unity Textures` require that dimension sizes should be powers of 2 on each side, (that is, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048 pixels (px), and so on). It is possible to use non-power of two dimensions but it requires more memory and is slower for the GPU to sample. To simplify things, the framework is requiring power of 2 for both dimensions. 
+`Unity Textures` require that dimension sizes should be powers of 2 on each side, (that is, 32, 64, 128, 256, 512, 1024, 2048 pixels (px), and so on). It is possible to use non-power of two dimensions but it requires more memory and is slower for the GPU to sample. We will notify the creator when they are using a resolution that isn't a power of 2. This may or may not be the case for `Unreal Engine` textures.
 
-This may or may not be the case for `Unreal Engine` textures but for simplicity, we will keep the Power of 2 requirement for now.
+`uri` for each texture is what is loaded by the game engine. The `height` and `width`, which are optional, must correspond to the downloaded image texture (if they exist), otherwise, it will not be loaded. Based on the subtype, it is up to the game developer on how the texture is used. The game developer also determines whether to load the image as a texture and assign it to a material (3D Project) or load it as a Sprite (2D project). 
 
-`uri` for each texture is what is loaded by the game engine. The `height` and `width` must correspond to the downloaded image texture, otherwise, it will not be loaded. It is up to the game developer on how the texture is used whether it be as a decal, a user image, a logo, a banner, etc. The game developer also determines whether to load the image as a texture and assign it to a material (3D Project) or load it as a Sprite (2D project). 
+`textures` is an array of Texture objects, giving a content creator the ability to add different resolutions and media types for their image asset. The `height`, `width`, and `contentType` gives the game developer the ability to choose which texture they would like to load in their game, based on platform, graphics performance, or other reasons.
 
-The game developer will use the `height`, `width`, and `contentType` to determine which texture they wish to load.
-
-Once the metadata is loaded, the developer can choose which of the `assetProperties` to use if there is more than one.
-
-These `subtypes` are not final and may be updated. More `subtypes` may also be proposed by game developers and content creators. 
+More `subtypes` (use cases) may also be proposed by game developers and content creators in the future.
 
 ## Samples
 
-### Square Subtype
+### Profile Subtype
 ```
 {
     "name": "Rawrshak Logo Decal",
     "description": "Rawrshak Logo decal usable as a spray, emblem, or decal",
-    "image": "<default text icon uri on arweave>",
+    "image": "https://arweave.net/2BmDysofcccaTUbjKJHgr9_0ImlFadE00yAS_3E9M00",
     "tags": [
-        "Rawrshak",
-        "Logo",
-        "Summer Collection"
+        "rawrshak",
+        "logo",
+        "summer collection"
     ],
     "type": "image",
-    "subtype": "square",
+    "subtype": "profile",
     "nsfw": "false",
     "assetProperties": 
     [
         {
-            "uri": "arweave.net/<tx>",
+            "uri": "arweave.net/2BmDysofcccaTUbjKJHgr9_0ImlFadE00yAS_3E9M00",
             "height": 256,
             "width": 256,
             "contentType": "image/png"
         },
         {
-            "uri": "arweave.net/<tx>",
+            "uri": "arweave.net/95Da52sofcccaTUbjKJHgr9_0ImlFadE00yAS99e4Ca",
             "height": 512,
             "width": 512,
             "contentType": "image/png"
         },
         {
-            "uri": "arweave.net/<tx>",
-            "height": 1024,
-            "width": 1024,
-            "contentType": "image/png"
+            "uri": "arweave.net/1asda774acccaTUbjKJHgr9_0asd7hh8q4dz95a4g5e"
         }
     ],
-    "devProperties":
+    "properties":
     {
         "creatorComments": "Rawrshak Represent!"
     }
@@ -146,36 +147,24 @@ These `subtypes` are not final and may be updated. More `subtypes` may also be p
 {
     "name": "Rawrshak Banner",
     "description": "Rawrshak Banner usable in banners, headers, etc.",
-    "image": "<default text icon uri on arweave>",
+    "image": "https://arweave.net/2BmDysofcccaTUbjKJHgr9_0ImlFadE00yAS_3E9M00",
     "tags": [
-        "Rawrshak",
-        "Logo Banner",
-        "Summer Collection"
+        "rawrshak",
+        "logo",
+        "summer collection"
     ],
     "type": "image",
     "subtype": "horizontal-banner",
     "assetProperties": 
     [
         {
-            "uri": "arweave.net/<tx>",
+            "uri": "arweave.net/asdas789zx93cccaTUbjKJHgr9asd423g1axa_sa500as",
             "height": 128,
             "width": 256,
             "contentType": "image/png"
-        },
-        {
-            "uri": "arweave.net/<tx>",
-            "height": 256,
-            "width": 512,
-            "contentType": "image/png"
-        },
-        {
-            "uri": "arweave.net/<tx>",
-            "height": 512,
-            "width": 1024,
-            "contentType": "image/png"
         }
     ],
-    "devProperties":
+    "properties":
     {
         "creatorComments": "Rawrshak Banner Represent!"
     }
