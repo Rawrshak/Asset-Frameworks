@@ -75,13 +75,9 @@ The public metadata schema will be based on the [ERC-1155 schema](https://github
             "type": "boolean",
             "description": "A flag that indicates that a particular asset contains explicit or adult content."
         },
-        "assetProperties": {
-            "type": "object",
-            "description": "Type-specific properties of the asset that is necessary to present the asset in-game."
-        },
         "properties": {
             "type": "object",
-            "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. Additional data specific to the creator's game or project."
+            "description": "Arbitrary properties. Values may be strings, numbers, object or arrays. This contains the Type-specific properties of the asset that is necessary to present the asset in-game. This may also feature additional data specific to the creator's game or project."
         }
     }
 }
@@ -102,9 +98,9 @@ We extended the schema by adding `type` and `subtype` to help games identify and
 
 `tags` is an array of strings that user-facing applications will use to organize assets. Tags must be lower-case.
 
-`assetProperties` is an object that contains the data specific to the `type` and `subtype` asset. Each type of asset will have a different frameworks for what the `assetProperties` object contains. We will create separate documents for each schema pertaining to the type/subtypes. Some types may have duplicate properties such as `description`. In these cases, the app developer should use the lower level property in the `assetProperties`. If it is empty or undefined, the reader should use the higher level property. 
+`properties` is an object that contains arbitrary properties that a developer can added specific to their asset. For the Rawrshak Asset Framework, `properties` will include an object containing the data specific to the `type` and `subtype` for an asset. Each type of asset will have a different frameworks for what the type-specific data object contains. We will create separate documents for each schema pertaining to the type/subtypes. Some types may have duplicate properties such as `description`. In these cases, the app developer should use the lower level property in the `properties`. If it is empty or undefined, the reader should use the higher level property.
 
-`properties` is an object that contains arbitrary properties that a developer can added specific to their asset. Developers may use the `properties` object to add information specific to their game or custom asset usage.
+Developers may also include additional information to the `properties` object specific to their game or custom asset usage.
 
 Currently, the Rawrshak Asset Framework only supports `text`, `audio`, `image`, and `static_object` (static 3d object). In the future, the project aims to create frameworks for other in-game assets such as Chracters (skins), Animations (poses, emotes), Attachables (Hats, weapons, backpacks), Consumables (Area keys, lootboxes, DLC keys), etc. `custom` subtype assets may be creator or game specific and will probably be filtered out (unsupported) by other games.
 
@@ -129,13 +125,13 @@ Currently, the Rawrshak Asset Framework only supports `text`, `audio`, `image`, 
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties": 
-    {
-        "title": "Big Achievement Title",
-        "description": "Success in Big Challenge. Player defeated Big Boss."
-    },
     "properties":
     {
+        "textProperties":
+        {
+            "title": "Big Achievement Title",
+            "description": "Success in Big Challenge. Player defeated Big Boss."
+        },
         "experience-gain": 50,
         "level-requirement": 10,
         "unlock-bonus": "AA4424"

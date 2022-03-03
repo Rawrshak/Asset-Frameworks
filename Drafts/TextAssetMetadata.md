@@ -16,13 +16,12 @@ The Text Asset Metadata framework creates a guide for text-based asset tokens, w
 
 ## Abstract
 
-The Text Asset framework defines a metadata standard for text-based assets and text asset use-cases. The text metadata standard is stored in the `assetProperties` property in the Public Asset Metadata. 
+The Text Asset framework defines a metadata standard for text-based assets and text asset use-cases. The text metadata standard is stored in the `properties` property in the Public Asset Metadata. 
 
 Text asset tokens can be used to convey in-game achievements, in-game lore, secret instructions, and other in-game content. Gamers acquire these asset tokens through gameplay or purchase. Game developers can use these text assets across games. It enables future, yet-to-be-created usage such as keys or crafting material for future content. 
 
 ## Terminology 
 
-* `assetProperties` - This is the property in the public asset metadata containing the Text token asset data.
 * `Achievements` - Milestones or rewards in a player's in-game progress. 
 * `Title` - A text-based asset reward used as player accolades.
 * `Lore` - Additional in-game information about characters, places, and other in-game content.
@@ -34,7 +33,7 @@ We define the three Text subtypes, each hinting different usage. The `subtypes` 
 ### Title Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
@@ -52,7 +51,7 @@ We define the three Text subtypes, each hinting different usage. The `subtypes` 
 ### Lore Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
@@ -70,7 +69,7 @@ We define the three Text subtypes, each hinting different usage. The `subtypes` 
 ### Custom Subtype
 ```
 {
-    "title": "Asset Properties",
+    "title": "textProperties",
     "type": "object",
     "properties": {
         "title": {
@@ -87,7 +86,7 @@ We define the three Text subtypes, each hinting different usage. The `subtypes` 
 
 ## Rationale
 
-For Text-based assets, there are only two properties: `title` and `description`. Not to be confused for the `name` and `description` properties in the main metadata object, `title` and `description` inside the `assetProperties` object are the properties that should appear in-game when this asset is loaded by the user. If any of these are null or undefined, a game developer should default to using the `name` and `description` from the main metadata object.
+For Text-based assets, there are only two properties: `title` and `description`. Not to be confused for the `name` and `description` properties in the main metadata object, `title` and `description` inside the `textProperties` object are the properties that should appear in-game when this asset is loaded by the user. If any of these are null or undefined, a game developer should default to using the `name` and `description` from the main metadata object.
 
 The character limits for the `title` and `description` are there so that game developers may allocate the appropriate amount of space in-game when these assets are loaded. Keep in mind that text-based assets violate the asset type or subtype requirements, in this case character limits, will not be loaded by the in-game libraries and thus players won't be able to use them. 
 
@@ -111,13 +110,13 @@ Text asset tokens data is plain-text and should not contain code or specially fo
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties": 
-    {
-        "title": "Rawrshak Alpha User",
-        "description": "Rawrshak's Alpha participant."
-    },
     "properties":
     {
+        "textProperties":
+        {
+            "title": "Rawrshak Alpha User",
+            "description": "Rawrshak's Alpha participant."
+        },
         "creatorComments": "These are the earliest users of the Rawrshak project!"
     }
 }
@@ -137,13 +136,13 @@ Text asset tokens data is plain-text and should not contain code or specially fo
     "type": "text",
     "subtype": "title",
     "nsfw": "false",
-    "assetProperties":
-    {
-        "title": "Rawrshak's Lore",
-        "description": "Something something, deep Rawrshak Lore.",
-    },
     "properties":
     {
+        "textProperties":
+        {
+            "title": "Rawrshak's Lore",
+            "description": "Something something, deep Rawrshak Lore.",
+        },
         "creatorComments": "This asset lore should only go to the early users!"
     }
 }

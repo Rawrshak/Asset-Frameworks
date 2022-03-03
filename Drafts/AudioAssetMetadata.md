@@ -16,7 +16,7 @@ The Audio Asset Metadata framework creates a guide for Audio-based asset tokens,
 
 ## Abstract
 
-The Audio Asset framework defines a metadata standard for audio-based assets and audio asset use-cases. The audio metadata standard is stored in the `assetProperties` property in the Public Asset Metadata.
+The Audio Asset framework defines a metadata standard for audio-based assets and audio asset use-cases. The audio metadata standard is stored in the `properties` property in the Public Asset Metadata.
 
 
 The metadata standard allows game developers to easily parse metadata for audio asset tokens for audio use in-game. This allows players to unlock audio assets from one game or world and use them wherever it is applicable.
@@ -69,7 +69,7 @@ The custom subtype doesn't have a maximum duration for the audio. The creator is
 ### Schema 
 ```
 {
-    "title": "Asset Properties",
+    "title": "audioProperties",
     "type": "object",
     "properties": {
         "audio": {
@@ -107,7 +107,7 @@ Each audio subtype has different max duration requirements in order to guarantee
 
 `duration` and `contentType` are optional and is used to give developers hints on how to load an asset. Some creators may opt to leave it out or it may be incorrect due to malicious or negligence. 
 
-Once the metadata is loaded, the developer can choose which of the `assetProperties` to use if there is more than one.
+Once the metadata is loaded, the developer can choose which of the `audioProperties` to use if there is more than one.
 
 This audio metadata standard is simple and contains only the most basic required information for an audio asset.
 
@@ -128,19 +128,19 @@ This audio metadata standard is simple and contains only the most basic required
     "type": "audio",
     "subtype": "sound-effect",
     "nsfw": "false",
-    "assetProperties": 
-    [
-        {
-            "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4"
-        },
-        {
-            "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4",
-            "contentType": "audio/mp3",
-            "duration": "500",
-        }
-    ],
     "properties":
     {
+        "audioProperties": 
+        [
+            {
+                "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4"
+            },
+            {
+                "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4",
+                "contentType": "audio/mp3",
+                "duration": "500",
+            }
+        ],
         "creatorComments": "Unique Rawrshak Ping!"
     }
 }
@@ -160,19 +160,19 @@ This audio metadata standard is simple and contains only the most basic required
     "type": "audio",
     "subtype": "background-music",
     "nsfw": "false",
-    "assetProperties": 
-    [
-        {
-            "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4",
-            "contentType": "audio/wav",
-            "duration": "90000",
-        },
-        {
-            "uri": "arweave.net/dI_5bBKqfDwLUHhQXu_ubnnBi5f3DcpHQ_oHmIky1QU"
-        }
-    ],
     "properties":
     {
+        "audioProperties": 
+        [
+            {
+                "uri": "arweave.net/TsBCV3HyMssIZQk0S7MqZht_zR3e9pBXDWUo0VYAXW4",
+                "contentType": "audio/wav",
+                "duration": "90000",
+            },
+            {
+                "uri": "arweave.net/dI_5bBKqfDwLUHhQXu_ubnnBi5f3DcpHQ_oHmIky1QU"
+            }
+        ],
         "creatorComments": "Some opening song that introduces Rawrshak"
     }
 }

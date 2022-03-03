@@ -16,7 +16,7 @@ The Image Asset Metadata framework creates a guide for Image-based asset tokens,
 
 ## Abstract
 
-The Image Asset Framework defines a metadata standard for image/2d-based assets and image asset use-cases. The image metadata standard is stored in the `assetProperties` property in the Public Asset Metadata. 
+The Image Asset Framework defines a metadata standard for image/2d-based assets and image asset use-cases. The image metadata standard is stored in the `properties` property in the Public Asset Metadata. 
 
 The metadata standard allows game developers to easily parse metadata for image asset tokens for display in-game. This allows players to take their image assets and use them wherever it is applicable.
 
@@ -57,7 +57,7 @@ The custom subtype doesn't have a requirement for aspect ratio and doesn't have 
 ### Metadata Schema 
 ```
 {
-    "title": "Asset Properties",
+    "title": "imageProperties",
     "type": "object",
     "properties": {
         "textures": {
@@ -117,26 +117,26 @@ More `subtypes` (use cases) may also be proposed by game developers and content 
     "type": "image",
     "subtype": "profile",
     "nsfw": "false",
-    "assetProperties": 
-    [
-        {
-            "uri": "arweave.net/2BmDysofcccaTUbjKJHgr9_0ImlFadE00yAS_3E9M00",
-            "height": 256,
-            "width": 256,
-            "contentType": "image/png"
-        },
-        {
-            "uri": "arweave.net/95Da52sofcccaTUbjKJHgr9_0ImlFadE00yAS99e4Ca",
-            "height": 512,
-            "width": 512,
-            "contentType": "image/png"
-        },
-        {
-            "uri": "arweave.net/1asda774acccaTUbjKJHgr9_0asd7hh8q4dz95a4g5e"
-        }
-    ],
     "properties":
     {
+        "imageProperties": 
+        [
+            {
+                "uri": "arweave.net/2BmDysofcccaTUbjKJHgr9_0ImlFadE00yAS_3E9M00",
+                "height": 256,
+                "width": 256,
+                "contentType": "image/png"
+            },
+            {
+                "uri": "arweave.net/95Da52sofcccaTUbjKJHgr9_0ImlFadE00yAS99e4Ca",
+                "height": 512,
+                "width": 512,
+                "contentType": "image/png"
+            },
+            {
+                "uri": "arweave.net/1asda774acccaTUbjKJHgr9_0asd7hh8q4dz95a4g5e"
+            }
+        ],
         "creatorComments": "Rawrshak Represent!"
     }
 }
@@ -155,17 +155,17 @@ More `subtypes` (use cases) may also be proposed by game developers and content 
     ],
     "type": "image",
     "subtype": "horizontal-banner",
-    "assetProperties": 
-    [
-        {
-            "uri": "arweave.net/asdas789zx93cccaTUbjKJHgr9asd423g1axa_sa500as",
-            "height": 128,
-            "width": 256,
-            "contentType": "image/png"
-        }
-    ],
     "properties":
     {
+        "imageProperties": 
+        [
+            {
+                "uri": "arweave.net/asdas789zx93cccaTUbjKJHgr9asd423g1axa_sa500as",
+                "height": 128,
+                "width": 256,
+                "contentType": "image/png"
+            }
+        ],
         "creatorComments": "Rawrshak Banner Represent!"
     }
 }

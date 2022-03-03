@@ -118,10 +118,10 @@ Decorations are static 3d objects that are acquired by users. There is no specif
 ### Metadata Schema 
 ```
 {
-    "title": "Asset Properties",
+    "title": "static3dProperties",
     "type": "object",
     "properties": {
-        "textures": {
+        "static3d": {
             "type": "array",
             "description": "An array of Prefab objects"
         }
@@ -129,7 +129,7 @@ Decorations are static 3d objects that are acquired by users. There is no specif
 }
 
 {
-    "title": "Prefab",
+    "title": "static3d",
     "type": "object",
     "properties": {
         "prefabName": {
@@ -179,43 +179,43 @@ The `shape` allows game developers to figure the general shape of a Rawrshak ass
     "type": "static3dobject",
     "subtype": "trophy",
     "nsfw": "false",
-    "assetProperties": 
-    [
-        {
-            "prefabName": "rawr-trophy",
-            "engine": "unity",
-            "renderPipeline": "brp",
-            "platform": "windows",
-            "shape": "horizontaly",
-            "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
-        },
-        {
-            "prefabName": "rawr-trophy",
-            "engine": "unity",
-            "renderPipeline": "brp",
-            "platform": "ios",
-            "shape": "horizontaly",
-            "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
-        },
-        {
-            "prefabName": "rawr-trophy",
-            "engine": "unity",
-            "renderPipeline": "brp",
-            "platform": "android",
-            "shape": "horizontaly",
-            "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
-        },
-        {
-            "prefabName": "rawr-trophy",
-            "engine": "unity",
-            "renderPipeline": "brp",
-            "platform": "webgl",
-            "shape": "horizontaly",
-            "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
-        }
-    ],
     "properties":
     {
+        "static3dProperties": 
+        [
+            {
+                "prefabName": "rawr-trophy",
+                "engine": "unity",
+                "renderPipeline": "brp",
+                "platform": "windows",
+                "shape": "horizontaly",
+                "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
+            },
+            {
+                "prefabName": "rawr-trophy",
+                "engine": "unity",
+                "renderPipeline": "brp",
+                "platform": "ios",
+                "shape": "horizontaly",
+                "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
+            },
+            {
+                "prefabName": "rawr-trophy",
+                "engine": "unity",
+                "renderPipeline": "brp",
+                "platform": "android",
+                "shape": "horizontaly",
+                "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
+            },
+            {
+                "prefabName": "rawr-trophy",
+                "engine": "unity",
+                "renderPipeline": "brp",
+                "platform": "webgl",
+                "shape": "horizontaly",
+                "uri": "https://arweave.net/5jpY4ouIl9EXqyep6z0p0S_6nt87DEfsnsxefAa9cOE"
+            }
+        ],
         "creatorComments": "A trophy that is the most appealing!"
     }
 }
